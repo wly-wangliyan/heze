@@ -1,0 +1,19 @@
+.no-data-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 200px 0;
+  /* background: #fff; */
+  height: 100%;
+  overflow: hidden;
+}
+
+.no-data-page > .content {
+  margin-top: 20px;
+}
+
+.no-data-page img {
+  width: 156px;
+  height: 134px;
+}

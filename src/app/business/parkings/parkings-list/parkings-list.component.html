@@ -1,0 +1,85 @@
+<div class="header">
+  <app-crumb [level1Name]="'基础管理'" [level2Name]="'停车场'"></app-crumb>
+  <div class="switch-btn-group">
+    <!--<button class="switch-btn" [routerLink]="['add']">添加停车场</button>-->
+    <!--<button class="switch-btn" [routerLink]="['groups']">分组管理</button>-->
+  </div>
+</div>
+<div class="content-flow">
+  <div class="list-container">
+    <form class="search-form">
+      <div class="form-group">
+        <span>名称：</span>
+        <input class="form-control" placeholder="请输入停车场名称" [(ngModel)]="searchParams.parking_name" name="parking_name"
+               (keyup)="searchText$.next()"/>
+      </div>
+      <div class="form-group">
+        <span>物业公司：</span>
+        <input class="form-control" placeholder="请输入物业公司" [(ngModel)]="searchParams.company_name" name="company_name"
+               (keyup)="searchText$.next()"/>
+      </div>
+      <div class="form-group">
+        <span>厂商名称：</span>
+        <input class="form-control" placeholder="请输入厂商名称" [(ngModel)]="searchParams.manufacturer_name"
+               name="manufacturer_name"
+               (keyup)="searchText$.next()"/>
+      </div>
+      <div class="form-group">
+        <span>系统名称：</span>
+        <input class="form-control" placeholder="请输入系统名称" [(ngModel)]="searchParams.platform_name" name="platform_name"
+               (keyup)="searchText$.next()"/>
+      </div>
+      <div class="form-group">
+        <span>状态：</span>
+        <select class="form-control" [(ngModel)]="searchParams.status" name="status"
+                (change)="searchText$.next()">
+          <option value="">全部</option>
+          <option value="1">运营中</option>
+          <option value="2">未运营</option>
+          <option value="3">待运营</option>
+        </select>
+      </div>
+    </form>
+    <div class="table">
+      <nz-table #userTable [nzData]="parkingsList" [nzShowPagination]="true" [nzPageSize]="'15'"
+                [nzLoading]="isLoadComplete"
+                [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="onNZPageIndexChange($event)" nzBordered>
+        <thead>
+        <tr>
+          <th class="special-text-index">序号</th>
+          <th>停车场名称</th>
+          <th>物业公司</th>
+          <th>停车管理系统-厂商</th>
+          <th>添加时间</th>
+          <th style="width: 6%;">状态</th>
+          <th style="width: 4%;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let parking of userTable.data;let i=index">
+          <td class="special-text-index">{{(i + (pageIndex - 1) * 15 + 1)|zeroFill}}</td>
+          <td [title]="parking.parking_name">{{parking.parking_name | zMaxLength:20 | zPlaceholder}}</td>
+          <!--物业公司-->
+          <td *ngIf="parking.companyName" [title]="parking.companyName">
+            {{parking.companyName|zMaxLength:20}}
+          </td>
+          <td *ngIf="!parking.companyName">--</td>
+          <!--停车管理系统-厂商-->
+          <td *ngIf="parking.manufacturerId" [title]="parking.platformFullName">
+            {{parking.platformFullName|zMaxLength:20}}
+          </td>
+          <td *ngIf="!parking.manufacturerId" [title]="parking.platformFullName?parking.platformFullName:''">
+            {{parking.platformFullName|zPlaceholder|zMaxLength:20}}
+          </td>
+          <td>{{parking.created_time * 1000 | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>{{generateStatus(parking)}}</td>
+          <td class="td-operation">
+            <button [title]="'查看详情'" class="btn-operation icon-view"
+                    [routerLink]="['detail', parking.parking_id]"></button>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

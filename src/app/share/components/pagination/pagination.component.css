@@ -1,0 +1,49 @@
+.pagination > li {
+  display: inline-block;
+  margin-left: 10px;
+  border-color: #f5f6fc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.pagination-sm > li {
+  margin-left: 0;
+}
+
+.pagination > li > a, .pagination > li > span {
+  cursor: pointer;
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+  cursor: not-allowed;
+}
+
+/* 翻页按钮 */
+.pagination {
+  float: right;
+  margin-right: 20px;
+}
+
+.pagination > .active > a {
+  background: #45c8dc;
+  border-color: #45c8dc;
+  color: #fff;
+}
+
+.a-sm {
+  padding: 3px 6px;
+}
+
+.pagination-sm {
+  margin: 10px;
+}
+
+.pagination > li > a, .pagination > li > span {
+  padding: 6px 14px;
+  color: #666;
+}
+
+.pagination-sm > li > a, .pagination-sm > li > span {
+  padding: 3px 8px;
+}

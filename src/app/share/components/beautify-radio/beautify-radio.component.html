@@ -1,0 +1,10 @@
+<ul *ngIf="beautifyRadioList.length>0" [class.block]="isBlock">
+  <li *ngFor="let beautifyRadio of beautifyRadioList">
+    <span (click)="onInputChange(beautifyRadio)"
+          [class.checked]="beautifyRadio.state === CheckboxState.checked"
+          [class.unchecked]="beautifyRadio.state === CheckboxState.unchecked">
+      <i>{{beautifyRadio.name}}</i>
+      <input type="radio">
+    </span>
+  </li>
+</ul>

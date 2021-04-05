@@ -1,0 +1,13 @@
+.selector-container {
+  display: flex;
+  align-items: center;
+  float: right;
+  height: 38px;
+  margin-right: 10px;
+}
+
+.selector-container > select {
+  margin-right: 5px;
+  margin-top: 9px;
+  width: 150px;
+}

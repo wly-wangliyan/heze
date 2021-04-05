@@ -1,0 +1,66 @@
+<div class="content-flow">
+  <div class="header-container">
+    <ul>
+      <li>时段累计</li>
+      <li>今日</li>
+      <li>昨日</li>
+    </ul>
+    <ul>
+      <li>停车场总数</li>
+      <li>{{headerParkingCount[today]}}</li>
+      <li>{{headerParkingCount[yesterday]}}</li>
+    </ul>
+    <ul>
+      <li>路外流量（辆）</li>
+      <li><span>{{headerOutsideFlow[today]|zTenThousandUnit}}</span>
+        <div class="div-percent">
+          <i class="icon-percent" *ngIf="todayPercentList[1].value"
+            [ngClass]="{'icon-percent-up':todayPercentList[1].isPlus,'icon-percent-down':!todayPercentList[1].isPlus}"></i>
+          <span class="span-percent" [title]="'变化率:截止今日上个整点时刻的该日数据相对于昨日同时段的变化率。'"
+            [ngClass]="{'span-percent-up':todayPercentList[1].isPlus,'span-percent-down':!todayPercentList[1].isPlus}">{{todayPercentList[1].value}}</span>
+        </div>
+      </li>
+      <li>{{headerOutsideFlow[yesterday]|zTenThousandUnit}}</li>
+    </ul>
+    <ul>
+      <li>路内流量（辆）</li>
+      <li><span>{{headerInsideFlow[today]|zTenThousandUnit}}</span>
+        <div class="div-percent">
+          <i class="icon-percent" *ngIf="todayPercentList[0].value"
+            [ngClass]="{'icon-percent-up':todayPercentList[0].isPlus,'icon-percent-down':!todayPercentList[0].isPlus}"></i>
+          <span class="span-percent" [title]="'变化率:截止今日上个整点时刻的该日数据相对于昨日同时段的变化率。'"
+            [ngClass]="{'span-percent-up':todayPercentList[0].isPlus,'span-percent-down':!todayPercentList[0].isPlus}">{{todayPercentList[0].value}}</span>
+        </div>
+      </li>
+      <li>{{headerInsideFlow[yesterday]|zTenThousandUnit}}</li>
+    </ul>
+    <ul>
+      <li>总流量（辆）</li>
+      <li><span>{{headerInsideFlow[today]+headerOutsideFlow[today]|zTenThousandUnit}}</span>
+        <div class="div-percent">
+          <i class="icon-percent" *ngIf="todayPercentList[2].value"
+            [ngClass]="{'icon-percent-up':todayPercentList[2].isPlus,'icon-percent-down':!todayPercentList[2].isPlus}"></i>
+          <span class="span-percent" [title]="'变化率:截止今日上个整点时刻的该日数据相对于昨日同时段的变化率。'"
+            [ngClass]="{'span-percent-up':todayPercentList[2].isPlus,'span-percent-down':!todayPercentList[2].isPlus}">{{todayPercentList[2].value}}</span>
+        </div>
+      </li>
+      <li>{{headerInsideFlow[yesterday]+headerOutsideFlow[yesterday]|zTenThousandUnit}}</li>
+    </ul>
+  </div>
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>流量趋势</h5>
+      <div class="date-picker">
+        <nz-date-picker [(ngModel)]="selectDate" (ngModelChange)="onDateChange($event)" [nzDisabledDate]="disabledTime"
+          [nzShowToday]=false name='select_date'>
+        </nz-date-picker>
+      </div>
+    </div>
+    <ul class="statistics-tab-btn statistics-subTab-layout">
+      <li [class.active]="currentSort==2" (click)="onSelectTypeClick(2)">路外流量</li>
+      <li [class.active]="currentSort==1" (click)="onSelectTypeClick(1)">路内流量</li>
+    </ul>
+    <div echarts class="statistics-chart" [options]="chartOptions" (chartInit)="onChartInit($event)">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...</div>
+  </div>
+</div>

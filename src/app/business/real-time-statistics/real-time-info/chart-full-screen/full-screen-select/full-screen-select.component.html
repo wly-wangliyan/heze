@@ -1,0 +1,11 @@
+<div class="full-screen-container" [ngStyle]="fullScreenBgStyle()">
+  <ul class="full-screen-select-container">
+    <li *ngFor="let fullScreen of fullScreenList"
+        [class.full-screen-select-hover]="fullScreenHoverNumber === fullScreen"
+        (mouseenter)="fullScreenHoverNumber = fullScreen"
+        (click)="onFullScreenSelect(fullScreen)"></li>
+  </ul>
+  <div class="full-screen-select-bg">
+    <span>点击ESC退出展示界面</span>
+  </div>
+</div>

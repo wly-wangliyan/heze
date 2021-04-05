@@ -1,0 +1,41 @@
+.parking-btn{
+  width: 104px;
+  height: 34px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 34px;
+  text-indent: 0px;
+  outline: none;
+  background: #45c8dc;
+  margin-right: 5px;
+}
+
+.parking-btn:hover{
+  background: #3baabb;
+}
+
+.table tr th{
+  /* text-align: center; */
+}
+
+.table tr td{
+  /* text-align: center; */
+}
+.parking-status {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.parking-status-break {
+  background: url('/assets/images/parking_status_break.png') no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.list-container {
+  min-height: calc(100% - 222px);
+}

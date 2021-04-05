@@ -1,0 +1,44 @@
+span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 10px 0 0;
+  cursor: pointer;
+  color: #333;
+}
+
+span:before {
+  content: ' ';
+  width: 20px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span > i {
+  font-style: normal;
+  line-height: 24px;
+  margin-left: 2px;
+}
+
+.unchecked {
+  background: url(../../../../assets/images/checkbox_unchecked.png) 0 0 no-repeat;
+}
+
+.checked {
+  background: url(../../../../assets/images/checkbox_checked.png) 0 0 no-repeat;
+}
+
+.checked.disabled {
+  background: url(../../../../assets/images/checkbox_checked_disabled.png) 0 0 no-repeat;
+  cursor: not-allowed;
+}
+.unchecked.disabled {
+  background: url(../../../../assets/images/checkbox_disabled.png) 0 0 no-repeat;
+  cursor: not-allowed;
+}
+
+input[type=checkbox] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

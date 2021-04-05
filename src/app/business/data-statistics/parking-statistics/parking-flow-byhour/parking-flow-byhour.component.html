@@ -1,0 +1,14 @@
+<div class="statistics-content-header statistics-content-header-combine">
+  <h5>分时{{directionType===1?'入':'出'}}场流量</h5>
+  <div class="date-picker">
+    <div>
+      <a (click)="onDayEchartClick(3)">近3日</a> / <a (click)="onDayEchartClick(7)">近7日</a>
+    </div>
+    <nz-date-picker name='select_date' [(ngModel)]="selectDate" [nzDisabledDate]="disabledTime"
+      (ngModelChange)="onDateChange($event)" [nzShowToday]=false>
+    </nz-date-picker>
+  </div>
+</div>
+<div echarts class="statistics-chart-enterflowhour" [options]="chartOptions">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+</div>

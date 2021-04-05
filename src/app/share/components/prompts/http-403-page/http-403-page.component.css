@@ -1,0 +1,24 @@
+.no-permission-wrap p {
+  text-align: center;
+}
+
+/*500*/
+.no-permission-wrap {
+  width: 480px;
+  color: #585858;
+  margin: 10% auto;
+  text-align: center;
+  overflow: hidden;
+  display: none;
+}
+
+.no-permission-wrap .content {
+  text-align: center;
+  overflow: hidden;
+  width: 60%;
+  margin: auto;
+}
+
+.no-permission-wrap .content > p {
+  float: left;
+}

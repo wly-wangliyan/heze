@@ -1,0 +1,60 @@
+<div class="content-flow">
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>车位周转率趋势</h5>
+      <div class="date-picker">
+        <nz-date-picker [(ngModel)]="startDate" [nzShowToday]=false [nzDisabledDate]="disabledStartDate"
+          name='start_time'></nz-date-picker>
+        <span class='line'>-</span>
+        <nz-date-picker [(ngModel)]="endDate" [nzShowToday]=false [nzDisabledDate]="disabledEndDate" name='end_time'>
+        </nz-date-picker>
+        <button type="button" class="btn btn-primary" style="margin-left: 5px;"
+          (click)="onSelectDateButtonClick()">确定</button>
+      </div>
+    </div>
+    <ul class="statistics-tab-btn statistics-subTab-layout">
+      <li [class.active]="currentSort==2" (click)="onSelectTypeClick(2)">路外停车场</li>
+      <li [class.active]="currentSort==1" (click)="onSelectTypeClick(1)">路内停车场</li>
+      <li [class.active]="currentSort==3" (click)="onSelectTypeClick(3)">全部停车场</li>
+    </ul>
+    <div echarts *ngIf="currentSort != 3" class="statistics-chart" [options]="lineChartOptions"
+      (chartInit)="onLineChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+    <div echarts *ngIf="currentSort == 3" class="statistics-chart" [options]="barChartOptions"
+      (chartInit)="onBarChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+  </div>
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>车位周转率明细</h5>
+      <button *ngIf="false" type="button" class="btn btn-primary export-btn" (click)="onExportButtonClick()">导出</button>
+    </div>
+    <div class="statistics-list-container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>路外临时车位总数</th>
+            <th>路外周转率</th>
+            <th>路内临时车位总数</th>
+            <th>路内周转率</th>
+            <th>整体周转率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of currentPageList">
+            <td>{{data.date}}</td>
+            <td>{{data.source ? data.source.road_outside_total_num : 0}}</td>
+            <td>{{data.source ? data.source.road_outside_turnover_rate : 0}}</td>
+            <td>{{data.source ? data.source.road_inside_total_num : 0}}</td>
+            <td>{{data.source ? data.source.road_inside_turnover_rate : 0}}</td>
+            <td>{{data.source ? data.source.total_turnover_rate : 0}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagination [currentPage]="currentPage" [pageCount]="pageCount" (pageSelected)="onPageSelected($event)">
+      </app-pagination>
+    </div>
+  </div>
+
+</div>

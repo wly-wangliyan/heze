@@ -1,0 +1,141 @@
+.main-layout {
+  min-width: 1200px;
+  height: 100%;
+}
+
+.main-left-layout {
+  height: calc(100% - 60px);
+  min-height: 750px;
+  width: 194px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-size: contain;
+  position: relative;
+  background: #3b4966;
+}
+
+.main-right-layout {
+  height: calc(100% - 60px);
+  width: calc(100% - 194px);
+  min-width: 1006px;
+  display: inline-block;
+  overflow: hidden;
+  background: #f3f7fd;
+}
+
+.main-header-layout {
+  width: 100%;
+  height: 60px;
+  background: #45c8dc;
+}
+
+.main-logo {
+  width: 244px;
+  height: 34px;
+  margin: 13px 0 13px 17px;
+  float: left;
+  cursor: pointer;
+  outline: none;
+  background: url('/assets/images/main_logo.png') no-repeat center;
+  background-size: auto 34px;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  float: right;
+  margin-right: 18px;
+  font-size: 14px;
+  color: #e1fbff;
+}
+
+.main-header:nth-child(2),
+.main-header:last-child {
+  margin-right: 45px;
+}
+
+.main-header div {
+  cursor: pointer;
+}
+
+.main-header:last-child div {
+  cursor: default;
+  font-size: 16px;
+}
+
+.main-header:nth-child(2) span {
+  width: 14px;
+  height: 14px;
+  border: none;
+  outline: none;
+  border-left: 1px solid #e1fbff;
+}
+
+.main-header-user {
+  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+  background: url('/assets/images/main_head.png') no-repeat center;
+  background-size: contain;
+}
+
+.content-router-outlet {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 修改密码模态框 */
+.modal-dialog {
+  min-height: 370px !important;
+}
+
+.pwd-modal-dialog {
+  width: 580px;
+  height: 370px;
+  border: none;
+  outline: none;
+}
+
+.pwd-modal-dialog .modal-content {
+  height: 100%;
+  margin: 35% auto auto auto;
+}
+
+.pwd-modal-dialog .modal-header {
+  height: 50px;
+  min-height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.pwd-modal-dialog .modal-title {
+  height: 100%;
+  line-height: inherit;
+  text-indent: 26px;
+}
+
+.pwd-modal-dialog .modal-body {
+  padding: 33px;
+  padding-bottom: 0;
+}
+
+.pwd-modal-dialog .form-group {
+  margin-bottom: 26px;
+}
+
+.pwd-modal-dialog .control-label {
+  font-size: 14px;
+  color: #333;
+  display: inline-block;
+  line-height: 40px;
+  padding: 0;
+}
+
+.pwd-modal-dialog .form-control {
+  width: 225px;
+  height: 40px;
+}

@@ -1,0 +1,5 @@
+<div #fullScreenContainer>
+  <app-chart-full-screen *ngIf="isAllScreen&&isFullScreen"></app-chart-full-screen>
+  <app-full-screen1 *ngIf="!isAllScreen&&isFullScreen" (fullScreen1Complete)="fullScreen1Complete($event)"></app-full-screen1>
+<!--  <app-video-monitor #videoMonitorComponent></app-video-monitor>-->
+</div>

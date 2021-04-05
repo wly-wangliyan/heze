@@ -1,0 +1,348 @@
+/* 高德map中需要替换的缩放控件效果 */
+
+.amap-ui-control-theme-amap-size > div {
+  width: 36px;
+  height: 72px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #aaaaaa;
+}
+
+.amap-ui-control-theme-amap-size > div > a {
+  width: 35px;
+  height: 36px;
+  font-size: 19px;
+  text-align: center;
+}
+
+/* 气泡弹出的提示信息窗体 */
+
+.amap-title-window-title {
+  font-size: 12px;
+  padding: 4px;
+  line-height: 20px;
+  opacity: 0.99;
+  background-color: #fafafa;
+  border: 1px solid #d0d0d0;
+}
+
+.amap-title-window-arrow {
+  height: 0px;
+  width: 16px;
+  clear: both;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  opacity: 0.99;
+}
+
+.amap-title-window-arrow .behind-arrow {
+  display: block;
+  border: 8px solid transparent;
+  border-top-color: #d0d0d0;
+}
+
+.amap-title-window-arrow .front-arrow {
+  position: absolute;
+  top: -1px;
+  left: 1px;
+  border: 7px solid transparent;
+  border-top-color: #fafafa;
+}
+
+/* 气泡弹出的详细信息窗体 */
+.amap-content-window {
+  width: 225px;
+  padding: 20px 15px;
+  background: rgba(59, 73, 102, .88);
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.amap-content-window:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.amap-content-window .icon-amap-video {
+  position: absolute;
+  right: 15px;
+  bottom: 23px;
+  width: 22px;
+  height: 22px;
+  background: url('/assets/images/map/icon_vedio.png') no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  /*cursor: pointer;*/
+}
+
+/*热力图气泡弹出的信息窗体*/
+.amap-content-window-unknown:before {
+  background: url(/assets/images/map/icon_unknown.png) no-repeat;
+}
+
+.amap-content-window-nervous:before {
+  background: url(/assets/images/map/icon_nervous.png) no-repeat;
+}
+
+.amap-content-window-loose:before {
+  background: url(/assets/images/map/icon_loose.png) no-repeat;
+}
+
+.amap-content-window-free:before {
+  background: url(/assets/images/map/icon_free.png) no-repeat;
+}
+
+.amap-content-window-row-container {
+  width: 100%;
+  padding-top: 5px;
+  display: flex;
+  position: relative;
+}
+
+.amap-content-window-row {
+  width: 100%;
+  min-height: 24px;
+  display: flex;
+  font-size: 12px;
+  color: #fff;
+  word-break: break-all;
+  justify-content: center;
+}
+
+.amap-content-window-row-container > .amap-content-window-row {
+  width: 50%;
+  flex: 1;
+  display: block;
+}
+
+.amap-content-window-row-container > .amap-content-window-row > div {
+  height: 24px;
+}
+
+.amap-content-window-row-container > .amap-content-window-row:nth-of-type(1):after {
+  content: ' ';
+  width: 1px;
+  height: 35px;
+  background: #fff;
+  position: absolute;
+  top: 14px;
+  left: 50%;
+}
+
+.amap-content-window-row-container > .amap-content-window-row > div {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.amap-content-window-row:not(.amap-parking-status-row) > div:last-child {
+  /*width: 79%;*/
+  width: 145px;
+  text-align: left;
+  line-height: 20px;
+}
+
+.amap-content-window-arrow {
+  width: 27px;
+  height: 25px;
+  background-image: url('/assets/images/map/bubble_triangle.png');
+  position: absolute;
+  left: -27px;
+  bottom: 10px;
+}
+
+.fs-amap-content-window {
+  background-color: rgba(0, 0, 0, .7);
+  color: #fff !important;
+  font-size: 13px !important;
+  width: 182px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 0;
+}
+
+.fs-amap-content-window-row,
+.fs-amap-content-window-row > div {
+  color: #fff;
+}
+
+.amap-content-window-row > div:first-child {
+  font-weight: bold;
+}
+
+.amap-parking-status-row > div:first-child {
+  width: 44px;
+  text-align: left;
+}
+
+.amap-monitor-row {
+  width: 100px;
+  height: 30px;
+  background: #091536;
+  border: 1px solid #13BBE2;
+  opacity: 0.65;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: #13BBE2;
+  margin: auto;
+  cursor: pointer;
+
+  img {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+}
+
+/* 带content的点标记 */
+.fs-amap-icon,
+.ther-amap-icon {
+  display: inline-block;
+  position: relative;
+  height: 38px;
+  width: 26px;
+}
+
+.fs-amap-icon > i {
+  display: block;
+  font-style: normal;
+  text-align: center;
+  line-height: 27px;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Microsoft YaHei', '微软雅黑', 'MicrosoftJhengHei', '华文细黑';
+}
+
+/* 普通的小泡泡 */
+.ther-amap-icon-free {
+  background: url('/assets/images/map/marker_free_small.png') center 0 no-repeat !important;
+}
+
+.ther-amap-icon-loose {
+  background: url('/assets/images/map/marker_loose_small.png') center 0 no-repeat !important;
+}
+
+.ther-amap-icon-nervous {
+  background: url('/assets/images/map/marker_nervous_small.png') center 0 no-repeat !important;
+}
+
+.ther-amap-icon-unknown {
+  background: url('/assets/images/map/marker_unknown_small.png') center 0 no-repeat !important;
+}
+
+.ther-amap-icon > i {
+  display: block;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  font-style: normal;
+  font-size: 12px;
+  text-align: center;
+  line-height: 27px;
+  font-family: 'Microsoft YaHei', '微软雅黑', 'MicrosoftJhengHei', '华文细黑';
+}
+
+.ther-amap-icon > b,
+.fs-amap-icon > b {
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.ther-amap-icon-active > b,
+.fs-amap-icon-active > b {
+  position: absolute;
+  top: -15px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+/* 放大的泡泡 */
+.fs-amap-icon-free-active,
+.ther-amap-icon-free-active {
+  background: url('/assets/images/map/marker_free_big.png') no-repeat !important;
+}
+
+.fs-amap-icon-loose-active,
+.ther-amap-icon-loose-active {
+  background: url('/assets/images/map/marker_loose_big.png') no-repeat !important;
+}
+
+.fs-amap-icon-nervous-active,
+.ther-amap-icon-nervous-active {
+  background: url('/assets/images/map/marker_nervous_big.png') no-repeat !important;
+}
+
+.fs-amap-icon-unknown-active,
+.ther-amap-icon-unknown-active {
+  background: url('/assets/images/map/marker_unknown_big.png') no-repeat !important;
+}
+
+.ther-amap-icon-active {
+  width: 40px;
+  height: 56px;
+}
+
+.ther-amap-icon-active > i {
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* 充电桩*/
+.ther-amap-icon > b,
+.fs-amap-icon > b {
+  background: url('/assets/images/map/icon_marker_top.png') 3px 3px no-repeat;
+}
+
+/* 放大的充电桩 */
+.ther-amap-icon-active > b,
+.fs-amap-icon-active > b {
+  background: url('/assets/images/map/icon_marker_top_active.png') 3px 5px no-repeat;
+}
+
+/* 充电桩颜色 */
+.ther-amap-icon-free > b,
+.fs-amap-icon-free > b,
+.ther-amap-icon-free-active > b,
+.fs-amap-icon-free-active > b {
+  background-color: #05a34b !important;
+}
+
+.ther-amap-icon-loose > b,
+.fs-amap-icon-loose > b,
+.ther-amap-icon-loose-active > b,
+.fs-amap-icon-loose-active > b {
+  background-color: #feb72d !important;
+}
+
+.ther-amap-icon-nervous > b,
+.fs-amap-icon-nervous > b,
+.ther-amap-icon-nervous-active > b,
+.fs-amap-icon-nervous-active > b {
+  background-color: #f25959 !important;
+}
+
+.ther-amap-icon-unknown > b,
+.fs-amap-icon-unknown > b,
+.ther-amap-icon-unknown-active > b,
+.fs-amap-icon-unknown-active > b {
+  background-color: #ab92c7 !important;
+}

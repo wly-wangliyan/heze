@@ -1,0 +1,30 @@
+<div class="address-select"
+     [ngStyle]="{width: selectContainerWidth + 'px', 'justify-content': (provinces==null||provinces.cities!=null) ? 'space-between' : 'normal'}">
+  <select class="form-control select-position" [(ngModel)]="currentRegions.pro_region_id" name="pro_region_id"
+          [title]="hasAdd || hasDetail ? currentRegions.pro_name : ''"
+          (change)="searchRegions($event.currentTarget.value, 'pro', 'edit')" [disabled]="hasDetail"
+          [ngStyle]="{'margin-right': (provinces==null||provinces.cities!=null) ? '0' : '5px'}" #pro>
+    <option value="">所在省</option>
+    <option *ngFor="let province of provinceList" [value]="province.region_id">{{province.name}}</option>
+  </select>
+  <select class="form-control select-position" *ngIf="(provinces==null)||(provinces.cities!=null)"
+          [(ngModel)]="currentRegions.city_region_id" name="city_region_id"
+          [title]="hasAdd || hasDetail ? currentRegions.city_name : ''"
+          (change)="searchRegions($event.currentTarget.value, 'city', 'edit')" [disabled]="hasDetail" #city>
+    <option value="">所在市</option>
+    <ng-container *ngIf="provinces">
+      <option *ngFor="let city of provinces.cities" [value]="city.region_id">{{city.name}}</option>
+    </ng-container>
+  </select>
+  <select class="form-control select-position" [(ngModel)]="currentRegions.dist_region_id" name="dist_region_id"
+          [title]="hasAdd || hasDetail ? currentRegions.dist_name : ''"
+          (change)="searchRegions($event.currentTarget.value, 'dist', 'edit')" [disabled]="hasDetail" #dist>
+    <option value="">所在区</option>
+    <ng-container *ngIf="cities">
+      <option *ngFor="let district of cities.districts" [value]="district.region_id">{{district.name}}</option>
+    </ng-container>
+    <ng-container *ngIf="provinces&&provinces.districts">
+      <option *ngFor="let district of provinces.districts" [value]="district.region_id">{{district.name}}</option>
+    </ng-container>
+  </select>
+</div>

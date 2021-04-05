@@ -1,0 +1,142 @@
+<div class="header">
+  <app-crumb [level1Name]="'数据统计'" [level2Name]="'停车场统计'"></app-crumb>
+  <div class="switch-btn-group">
+    <button class="switch-btn primary-btn" (click)="onOpenExportModal()">导出</button>
+  </div>
+</div>
+<div class="content-flow">
+  <div class="parking-statistics-body" [class.parking-statistics-body-close-left]="!isOpen">
+    <div class="parking-statistics-body-left" [@openCloseLeft]="isOpen ? 'open' : 'close'">
+      <div>
+        <span class="left-title">分类</span>
+        <span class="look-history" (click)="onLookHistoryClick()"><a class="look-history-a">查看历史</a></span>
+        <div class="look-history-content" *ngIf="lookHistoryShow">
+          <ul *ngIf="lookParkingHistory && lookParkingHistory.length > 0">
+            <li class=" look-history-content-li" *ngFor="let item of lookParkingHistory" [title]="item.parking_name"
+              (click)="onLookHistoryDetailClick(item)">
+              {{item.parking_name | zMaxLength:5}}
+              <span class="history-delete-icon" (click)="onDeleteHistoryClick($event,item)"></span>
+            </li>
+          </ul>
+          <span *ngIf="!lookParkingHistory || lookParkingHistory.length===0" style="padding-left: 10px;">无</span>
+        </div>
+      </div>
+      <form class="parking-statistics-search-from">
+        <div>
+          <app-beautify-radio [isBlock]=false [beautifyRadioList]="areaTypeList"
+            (checkChange)="onSelectAreaType($event)"></app-beautify-radio>
+        </div>
+        <ng-container *ngFor="let region of regionList;let index=index" class="checkbox">
+          <app-beautify-checkbox [name]="region.name" [extData]="region" [checked]="region.isChecked"
+            (checkChange)="onRegionChange($event)"></app-beautify-checkbox>
+        </ng-container>
+        <div class="search-div">
+          <input class="form-control" type="text" name="search" [(ngModel)]="parkingFlowParams.search_name"
+            placeholder="请输入停车场名称/位置" maxlength="50">
+          <input type="submit" value="" (click)="onSubmitClick()">
+        </div>
+      </form>
+      <table class="parking-table table-hover">
+        <thead>
+          <tr>
+            <th class="special-text-index">序号</th>
+            <th>停车场名称</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of dataList;let index=index" (click)="onSelectTableItem(data, 2)">
+            <td class="special-text-index">
+              {{((searchAssistant.currentPage - 1) * searchAssistant.pageSize + index + 1)|zeroFill}}
+            </td>
+            <td [title]="data.parking_name">
+              <span *ngIf="data.area_type === 1" class="inroad-prefix">【路内】</span>
+              <span *ngIf="data.area_type === 2" class="outroad-prefix">【路外】</span>
+              <span class="parking-name">{{data.parking_name | zMaxLength:8}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagination [currentPage]="searchAssistant.currentPage" [pageCount]="searchAssistant.pageList.length"
+        (pageSelected)="searchAssistant.pageSelected($event)" [size]="'sm'"></app-pagination>
+      <button class="hidden-change-button" (click)="onTranslationChangeClick()">
+        {{isOpen? '<<':'>>'}}
+      </button>
+    </div>
+    <div class="parking-statistics-body-right" [@openCloseRight]="isOpen ? 'open' : 'close'" *ngIf="idSearchData">
+      <div class="parking-statistics-body-right-top">
+        <div>
+          <div class="P-icon">
+            P
+          </div>
+          <span [title]="parkingName">{{parkingName | zMaxLength:15}}</span>
+        </div>
+        <div>
+          <span>车位总数：</span>
+          <span class="car-number">{{total}}</span>
+        </div>
+      </div>
+      <div class="parking-statistics-body-right-middle content-flow">
+        <div class="parking-statistics-body-right-middle-left">
+          <div class="statistics-content-header statistics-content-header-combine">
+            <h5>日流量</h5>
+            <div class="date-picker">
+
+              <nz-date-picker name='start_time' [(ngModel)]="startDate" [nzShowToday]=false
+                [nzDisabledDate]="disabledStartDate" (ngModelChange)="onDayFlowStartDateChange($event)">
+              </nz-date-picker>
+              <span>-</span>
+              <nz-date-picker name='end_time' [(ngModel)]="endDate" [nzShowToday]=false
+                [nzDisabledDate]="disabledEndDate" (ngModelChange)="onDayFlowEndDateChange($event)"></nz-date-picker>
+              <select name="cycle" class="form-control" [value]="currentCycle" (change)="onFlowSelectChange($event)">
+                <option value="0">按天统计</option>
+                <option value="1">按周统计</option>
+                <option value="2">按月统计</option>
+              </select>
+            </div>
+            <div echarts class="statistics-chart-dayflow" [options]="lineChartOptions">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+            </div>
+          </div>
+        </div>
+        <div class="parking-statistics-body-right-middle-right">
+          <div class="statistics-content-header statistics-content-header-combine">
+            <h5>周转率</h5>
+            <div class="date-picker">
+              <nz-date-picker name='turnover_start_time' [(ngModel)]="turnoverStartDate" [nzShowToday]=false
+                [nzDisabledDate]="disabledTurnoverStartDate" (ngModelChange)="onDayTurnoverStartDateChange($event)">
+              </nz-date-picker>
+              <span>-</span>
+              <nz-date-picker name='turnover_end_time' [(ngModel)]="turnoverEndDate" [nzShowToday]=false
+                [nzDisabledDate]="disabledTurnoverEndDate" (ngModelChange)="onDayTurnoverEndDateChange($event)">
+              </nz-date-picker>
+              <select name="cycle" class="form-control" [value]="turnoverCurrentCycle"
+                (change)="onTurnoverSelectChange($event)">
+                <option value="0">按天统计</option>
+                <option value="1">按周统计</option>
+                <option value="2">按月统计</option>
+              </select>
+            </div>
+            <div echarts class="statistics-chart-dayflow" [options]="turnoverLineChartOptions">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="parking-statistics-body-right-bottom">
+        <div class="parking-statistics-body-right-bottom-left">
+          <app-parking-flow-byhour #entryFlowByHour [parkingId]="parkingId" [regionId]="regionId" [directionType]=2>
+          </app-parking-flow-byhour>
+        </div>
+        <div class="parking-statistics-body-right-bottom-right">
+          <app-parking-flow-byhour #exitFlowByHour [parkingId]="parkingId" [regionId]="regionId" [directionType]=1>
+          </app-parking-flow-byhour>
+        </div>
+      </div>
+    </div>
+    <!--未查询到数据-->
+    <app-no-data-page *ngIf="!idSearchData"></app-no-data-page>
+  </div>
+</div>
+
+<app-export-modal #exportModal></app-export-modal>

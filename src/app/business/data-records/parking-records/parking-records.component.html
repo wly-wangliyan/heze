@@ -1,0 +1,95 @@
+<div class="header">
+  <app-crumb [level1Name]="'数据记录'" [level2Name]="'停车记录'"></app-crumb>
+</div>
+<div class="content-flow">
+  <div class="list-container">
+    <form class="search-form" autocomplete="off">
+      <div class="form-group">
+        <span>停车场：</span>
+        <input class="form-control" [(ngModel)]="searchParams.parking_name" maxlength="50" name="parking_name"
+          placeholder="请输入停车场名称" appIgnoreSpace (keyup)="onSearchBtnClick()" />
+      </div>
+      <div class="form-group">
+        <span>车牌号：</span>
+        <input class="form-control" [(ngModel)]="searchParams.car_id" name="car_id" placeholder="请输入车牌号" maxlength="20"
+          appIgnoreSpace (keyup)="onSearchBtnClick()" />
+      </div>
+      <div class="form-group">
+        <span>用户类型：</span>
+        <select class="form-control" [(ngModel)]="searchParams.user_types" name="user_types">
+          <option value="">全部</option>
+          <option *ngFor="let userType of defaultUserType" [value]="userType">
+            {{userType|userTypePipe}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group form-time-group">
+        <span>入场时间：</span>
+        <nz-date-picker [(ngModel)]="entrance_start_date" [nzDisabledDate]="disabledEntryStartDate" nzPlaceHolder="开始时间"
+          [nzShowToday]=false name='entrance_start_date' [nzShowTime]="{'nzFormat':'HH:mm'}"
+          nzFormat="yyyy-MM-dd HH:mm"></nz-date-picker>
+        <span class="form-separator">-</span>
+        <nz-date-picker [(ngModel)]="entrance_end_date" [nzDisabledDate]="disabledEntryEndDate" nzPlaceHolder="结束时间"
+          [nzShowToday]=false name='entrance_end_date' [nzShowTime]="{'nzFormat':'HH:mm'}" nzFormat="yyyy-MM-dd HH:mm">
+        </nz-date-picker>
+      </div>
+      <div class="form-group form-time-group">
+        <span>出场时间：</span>
+        <nz-date-picker [(ngModel)]="exit_start_date" [nzDisabledDate]="disabledExitStartDate" nzPlaceHolder="开始时间"
+          [nzShowToday]=false name='exit_start_date' [nzShowTime]="{'nzFormat':'HH:mm'}" nzFormat="yyyy-MM-dd HH:mm">
+        </nz-date-picker>
+        <span class="form-separator">-</span>
+        <nz-date-picker [(ngModel)]="exit_end_date" [nzDisabledDate]="disabledExitEndDate" nzPlaceHolder="结束时间"
+          [nzShowToday]=false name='exit_end_date' [nzShowTime]="{'nzFormat':'HH:mm'}" nzFormat="yyyy-MM-dd HH:mm">
+        </nz-date-picker>
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="onSearchBtnClick()">查询</button>
+      </div>
+    </form>
+
+    <!--ng 表格 -->
+    <div class="table">
+      <nz-table #rowSelectionTable [nzData]="parkingRecordList" [nzShowPagination]="true" [nzPageSize]="'15'"
+        [nzLoading]="isLoading" [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="onNZPageIndexChange($event)"
+        nzBordered>
+        <thead>
+          <tr>
+            <th class="special-text-index">序号</th>
+            <th>停车场</th>
+            <th>车牌号</th>
+            <th>用户类型</th>
+            <th>入场时间</th>
+            <th>停车时长</th>
+            <th>出场时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parkingRecord of rowSelectionTable.data ;let i=index">
+            <td class="special-text-index">{{(i+(pageIndex-1)*15+1)|zeroFill}}
+            </td>
+            <td [title]="parkingRecord.parking?.parking_name">
+              {{(parkingRecord.parking?.parking_name|zMaxLength:20) | zPlaceholder}}
+            </td>
+            <td>
+              <span *ngIf="parkingRecord.car_id.startsWith('无')">无牌车</span>
+              <span *ngIf="!parkingRecord.car_id.startsWith('无')">
+                {{parkingRecord.car_id ? parkingRecord.car_id : '--'}}</span>
+            </td>
+            <td [title]="parkingRecord.user_types|userTypePipe">
+              {{parkingRecord.user_types|userTypePipe |zMaxLength}}
+            </td>
+            <td>
+              {{parkingRecord.entry_time?(parkingRecord.entry_time*1000| date:"y-MM-dd HH:mm:ss"):'--' }}
+            </td>
+            <!-- <td>{{parkingRecord.parking_time|zDuration1}}</td> -->
+            <td>{{parkingRecord.entry_time|zDuration:parkingRecord.exit_time}}</td>
+            <td>
+              {{parkingRecord.exit_time?(parkingRecord.exit_time*1000| date:"y-MM-dd HH:mm:ss"):'--' }}
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

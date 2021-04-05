@@ -1,0 +1,64 @@
+<div class="header">
+  <app-crumb [level1Name]="'员工管理'" [level1RelativePath]="'../../'" [level2Name]="'查看详情'"></app-crumb>
+  <div class="switch-btn-group">
+    <button class="switch-btn" [routerLink]="['../../edit/'+ username]" [queryParams]="{from:'detail'}">编辑</button>
+  </div>
+</div>
+<div class="content-flow">
+  <div class="table-detail-container">
+    <div class="table-item">
+      <table class="table">
+        <tr>
+          <td>账号：</td>
+          <td>
+            {{user.username|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>姓名：</td>
+          <td>
+            {{user.realname|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>联系方式：</td>
+          <td>
+            {{user.telephone|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>邮箱：</td>
+          <td>
+            {{user.email|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>权限：</td>
+          <td>
+            <ng-container *ngFor="let permission of permissionList;">
+              <span class="table-permission" *ngIf="permission.isChecked">{{permission.source.chinese_name}}</span>
+            </ng-container>
+          </td>
+        </tr>
+        <tr>
+          <td>部门：</td>
+          <td>
+            {{user.department|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>备注：</td>
+          <td>
+            {{user.remarks|zPlaceholder}}
+          </td>
+        </tr>
+        <tr>
+          <td>添加时间：</td>
+          <td>
+            {{user.created_time*1000|date:"y-MM-dd HH:mm:ss"}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

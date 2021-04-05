@@ -1,0 +1,18 @@
+<div class="chart-item-content">
+  <div echarts class="chart-dashboard" [options]="chartOptions" (chartInit)="onChartInit($event)">
+  </div>
+  <div class="chart-detail">
+    <div class="chart-header">
+      <app-chart-counter [title]="'车位总数'" bgColor="#45c8dc" [count]="dataInfo?dataInfo.total_num:0" unit="个">
+      </app-chart-counter>
+    </div>
+    <div class="chart-progress-1">
+      <app-chart-progressbar [title]="'占用车位数'" [count]="dataInfo?dataInfo.used_num:0"
+        [total]="dataInfo?dataInfo.total_num:0" [color]="'#46d93f'"></app-chart-progressbar>
+    </div>
+    <div class="chart-progress-2">
+      <app-chart-progressbar [title]="'空闲车位数'" [count]="dataInfo?dataInfo.unused_num:0"
+        [total]="dataInfo?dataInfo.total_num:0" [color]="'#f16161'"></app-chart-progressbar>
+    </div>
+  </div>
+</div>

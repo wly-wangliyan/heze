@@ -1,0 +1,60 @@
+<div class="content-flow">
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>在线率趋势</h5>
+      <!--<span class="statistics-content-header-description">路外：{{outsideParkingCount}}   路内：{{insideParkingCount}}</span>-->
+      <div class="date-picker">
+        <nz-date-picker [(ngModel)]="startDate" [nzShowToday]=false [nzDisabledDate]="disabledStartDate"
+          name='start_time'></nz-date-picker>
+        <span class='line'>-</span>
+        <nz-date-picker [(ngModel)]="endDate" [nzShowToday]=false [nzDisabledDate]="disabledEndDate" name='end_time'>
+        </nz-date-picker>
+        <button type="button" class="btn btn-primary" style="margin-left: 5px;"
+          (click)="onSelectDateButtonClick()">确定</button>
+      </div>
+    </div>
+    <ul class="statistics-tab-btn statistics-subTab-layout">
+      <li [class.active]="currentSort==2" (click)="onSelectTypeClick(2)">路外停车场</li>
+      <li [class.active]="currentSort==1" (click)="onSelectTypeClick(1)">路内停车场</li>
+      <li [class.active]="currentSort==3" (click)="onSelectTypeClick(3)">全部停车场</li>
+    </ul>
+    <div echarts *ngIf="currentSort != 3" class="statistics-chart" [options]="lineChartOptions"
+      (chartInit)="onLineChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+    <div echarts *ngIf="currentSort == 3" class="statistics-chart" [options]="barChartOptions"
+      (chartInit)="onBarChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+  </div>
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>在线率明细</h5>
+      <button *ngIf="false" type="button" class="btn btn-primary export-btn" (click)="onExportButtonClick()">导出</button>
+    </div>
+    <div class="statistics-list-container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>路外停车场总数</th>
+            <th>路外在线率</th>
+            <th>路内停车场总数</th>
+            <th>路内在线率</th>
+            <th>整体在线率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of currentPageList">
+            <td>{{data.date}}</td>
+            <td>{{data.source ? data.source.road_outside_parking_total_num : 0}}</td>
+            <td>{{data.source ? (data.source.road_outside_online_rate * 100|zNumber:'0.0-2') : 0}}%</td>
+            <td>{{data.source ? data.source.road_inside_parking_total_num : 0}}</td>
+            <td>{{data.source ? (data.source.road_inside_online_rate * 100|zNumber:'0.0-2') : 0}}%</td>
+            <td>{{data.source ? (data.source.total_online_rate * 100|zNumber:'0.0-2') : 0}}%</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagination [currentPage]="currentPage" [pageCount]="pageCount" (pageSelected)="onPageSelected($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>

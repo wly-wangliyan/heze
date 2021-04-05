@@ -1,0 +1,62 @@
+<div class="header">
+  <app-crumb [level1Name]="'员工管理'"></app-crumb>
+  <div class="switch-btn-group">
+    <button class="switch-btn" [routerLink]="['add']">添加员工</button>
+  </div>
+</div>
+<div class="content-flow">
+  <div class="list-container">
+    <form class="search-form" autocomplete="off">
+      <div class="form-group">
+        <span>用户名：</span>
+        <input class="form-control" [(ngModel)]="searchParams.username" name="username" placeholder="请输入用户名"
+          (keyup)="searchText$.next()" maxlength="20" />
+      </div>
+      <div class="form-group">
+        <span>姓名：</span>
+        <input class="form-control" [(ngModel)]="searchParams.realname" name="realname" placeholder="请输入姓名"
+          (keyup)="searchText$.next()" maxlength="20" />
+      </div>
+      <div class="form-group">
+        <span>联系电话：</span>
+        <input class="form-control" [(ngModel)]="searchParams.telephone" name="telephone" placeholder="请输入联系电话"
+          (keyup)="searchText$.next()" maxlength="50" />
+      </div>
+    </form>
+
+    <!--ng 表格 -->
+    <div class="table">
+      <nz-table #userTable [nzData]="dataList" [nzShowPagination]="true" [nzPageSize]="'15'" [nzLoading]="isLoading"
+        [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="onNZPageIndexChange($event)" nzBordered>
+        <thead>
+          <tr>
+            <th class="special-text-index">序号</th>
+            <th>用户名</th>
+            <th>姓名</th>
+            <th>联系方式</th>
+            <th>部门</th>
+            <th>更新时间</th>
+            <th style="width: 160px;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of userTable.data;let i=index">
+            <td class="special-text-index">{{(i+(pageIndex-1)*15+1)|zeroFill}}</td>
+            <td [title]="data.username">{{data.username}}</td>
+            <td [title]="data.realname">{{data.realname}}</td>
+            <td [title]="data.telephone">{{data.telephone|zMaxLength:25}}</td>
+            <td [title]="data.department ? data.department : ''">{{data.department|zMaxLength |zPlaceholder}}</td>
+            <td>{{data.updated_time *1000| date:"y-MM-dd HH:mm:ss"}}</td>
+            <td class="td-operation">
+              <button [title]="'详情'" class="icon-view" [routerLink]="['detail',data.username]"></button>
+              <button [title]="'编辑'" class="icon-edit" [routerLink]="['edit',data.username]"
+                [queryParams]="{from:'list'}"></button>
+              <button [title]="'重置密码'" class="icon-reset" (click)="onResetPasswordBtnClick(data)"></button>
+              <button [title]="'删除'" class="icon-delete" (click)="onDeleteItemClick(data)"></button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

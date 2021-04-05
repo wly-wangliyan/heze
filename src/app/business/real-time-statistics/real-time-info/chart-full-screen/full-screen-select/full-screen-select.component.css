@@ -1,0 +1,85 @@
+.full-screen-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #011428;
+}
+
+.full-screen-container > .full-screen-select-container {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  height: 280px;
+  z-index: 99;
+}
+
+.full-screen-container > .full-screen-select-container > li {
+  width: 475px;
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* .full-screen-select-container > li:nth-of-type(1) {
+  background: url(/assets/images/screen/full_screen_select1.png) center no-repeat;
+}
+
+.full-screen-select-container > li:nth-of-type(1).full-screen-select-hover {
+  background: url(/assets/images/screen/full_screen_select1_push.png) center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.full-screen-select-container > li:nth-of-type(2) {
+  background: url(/assets/images/screen/full_screen_select2.png) center no-repeat;
+}
+
+.full-screen-select-container > li:nth-of-type(2).full-screen-select-hover {
+  background: url(/assets/images/screen/full_screen_select2_push.png) center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.full-screen-select-container > li:nth-of-type(3) {
+  background: url(/assets/images/screen/full_screen_select3.png) center no-repeat;
+}
+
+.full-screen-select-container > li:nth-of-type(3).full-screen-select-hover {
+  background: url(/assets/images/screen/full_screen_select3_push.png) center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.full-screen-select-container > li:nth-of-type(4) {
+  background: url(/assets/images/screen/full_screen_select4.png) center no-repeat;
+}
+
+.full-screen-select-container > li:nth-of-type(4).full-screen-select-hover {
+  background: url(/assets/images/screen/full_screen_select4_push.png) center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+} */
+
+.full-screen-select-bg {
+  position: absolute;
+  bottom: 0;
+  height: 368px;
+  width: 100%;
+  z-index: 98;
+  background: -webkit-linear-gradient(transparent, #fff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(transparent, #fff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(transparent, #fff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(transparent, #fff); /* 标准的语法 */
+}
+
+.full-screen-select-bg > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  color: #011428;
+  font-size: 30px;
+  text-align: center;
+}
+
+

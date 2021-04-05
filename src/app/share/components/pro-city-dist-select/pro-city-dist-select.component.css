@@ -1,0 +1,9 @@
+.address-select {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.select-position {
+  width: 140px !important;
+  color: #9a9a9a;
+}

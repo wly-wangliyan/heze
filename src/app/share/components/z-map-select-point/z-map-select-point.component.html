@@ -1,0 +1,14 @@
+<div class="modal fade" #mapModal data-backdrop="false" data-keyboard="true"
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content map-content">
+      <div class="modal-body modal-map">
+        <div class="close-wrap" (click)="closeMap()"></div>
+        <div id="container"></div>
+        <div class="btn-wrap" *ngIf="mapObj.type==1">
+          <button type="button" class="btn btn-primary" (click)="saveMarker()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

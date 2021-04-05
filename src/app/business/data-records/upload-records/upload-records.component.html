@@ -1,0 +1,69 @@
+<div class="header">
+  <app-crumb [level1Name]="'数据记录'" [level2Name]="'上传记录'"></app-crumb>
+</div>
+<div class="content-flow">
+  <div class="list-container">
+    <form class="search-form" autocomplete="off">
+      <div class="form-group">
+        <span>停车场：</span>
+        <input class="form-control" [(ngModel)]="searchParams.parking_name" name="parking_name" placeholder="请输入停车场名称"
+          appIgnoreSpace autocomplete="off" (keyup)="onSearchBtnClick()" maxlength="50" />
+      </div>
+      <div class="form-group">
+        <span>运营公司：</span>
+        <input class="form-control" [(ngModel)]="searchParams.company_name" name="company_name" placeholder="请输入运营公司名称"
+          appIgnoreSpace autocomplete="off" (keyup)="onSearchBtnClick()" maxlength="50" />
+      </div>
+      <div class="form-group">
+        <span>收费系统：</span>
+        <input class="form-control" [(ngModel)]="searchParams.platform_name" name="platform_name"
+          placeholder="请输入收费系统名称" appIgnoreSpace autocomplete="off" (keyup)="onSearchBtnClick()" maxlength="50" />
+      </div>
+      <div class="form-group form-time-group">
+        <span>上传时间：</span>
+        <nz-date-picker [(ngModel)]="upload_start_date" [nzDisabledDate]="disabledStartDate" nzPlaceHolder="开始时间"
+          [nzShowToday]=false name='upload_start_date' [nzShowTime]="{'nzFormat':'HH:mm'}" nzFormat="yyyy-MM-dd HH:mm">
+        </nz-date-picker>
+        <span class="form-separator">-</span>
+        <nz-date-picker [(ngModel)]="upload_end_date" [nzDisabledDate]="disabledEndDate" nzPlaceHolder="结束时间"
+          [nzShowToday]=false name='upload_end_date' [nzShowTime]="{'nzFormat':'HH:mm'}" nzFormat="yyyy-MM-dd HH:mm">
+        </nz-date-picker>
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="onSearchBtnClick()">查询</button>
+      </div>
+    </form>
+
+    <!--ng 表格 -->
+    <div class="table">
+      <nz-table #uploadTable [nzData]="uploadRecordList" [nzShowPagination]="true" [nzPageSize]="'15'"
+        [nzLoading]="isLoading" [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="onNZPageIndexChange($event)"
+        nzBordered>
+        <thead>
+          <tr>
+            <th class="special-text-index">序号</th>
+            <th>停车场</th>
+            <th>运营公司</th>
+            <th>收费系统</th>
+            <th>传输内容</th>
+            <th>传输时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let uploadRecord of uploadTable.data ;let i=index">
+            <td class="special-text-index">{{(i+(pageIndex-1)*15+1)|zeroFill}}</td>
+            <td [title]="uploadRecord.parking?.parking_name">{{uploadRecord.parking?.parking_name|zMaxLength:20}}</td>
+            <td [title]="uploadRecord.company?.company_name">
+              {{uploadRecord.company?.company_name|zMaxLength:20}}
+            </td>
+            <td [title]="uploadRecord.platform?.platform_name">
+              {{uploadRecord.platform?.platform_name|zMaxLength:20}}
+            </td>
+            <td>{{uploadRecord.upload_type|uploadContentType}}</td>
+            <td>{{uploadRecord.created_time*1000 | date:"y-MM-dd HH:mm:ss"}}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

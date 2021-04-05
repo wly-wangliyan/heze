@@ -1,0 +1,28 @@
+<span class="breadcrumb">
+  <!--有二级菜单-->
+  <ng-container *ngIf="level2Name">
+    <li *ngIf="!level1Valid">{{level1Name}}</li>
+    <li *ngIf="level1Valid"><a (click)="onLevel1LabelClick()">{{level1Name}}</a></li>
+    <!--有三级菜单-->
+    <ng-container *ngIf="level3Name">
+      <li><a (click)="onLevel2LabelClick()">{{level2Name}}</a></li>
+      <!--有四级菜单-->
+      <ng-container *ngIf="level4Name">
+        <li><a (click)="onLevel3LabelClick()">{{level3Name}}</a></li>
+        <li class="active">{{level4Name}}</li>
+      </ng-container>
+      <!--无四级菜单-->
+      <ng-container *ngIf="!level4Name">
+        <li class="active">{{level3Name}}</li>
+      </ng-container>
+  </ng-container>
+    <!--无三级菜单-->
+    <ng-container *ngIf="!level3Name">
+      <li class="active">{{level2Name}}</li>
+    </ng-container>
+  </ng-container>
+  <!--无二级菜单-->
+  <ng-container *ngIf="!level2Name">
+    <li class="active">{{level1Name}}</li>
+  </ng-container>
+</span>

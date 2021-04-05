@@ -1,0 +1,219 @@
+.expanded-menu {
+  width: 194px;
+  height: 100%;
+  position: relative;
+  left: 0;
+  z-index: 5;
+  background: #3b4966;
+  border: none;
+  outline: none;
+}
+
+.menu-first-level {
+  width: 100%;
+  height: 50px;
+  line-height: 51px;
+  position: relative;
+}
+
+.menu-first-level > a {
+  display: block;
+  font-size: 13px;
+  padding: 0 15px 0 22px;
+  text-decoration: none;
+  color: #cacfdb;
+  position: relative;
+}
+
+.menu-first-level > a:hover, .menu-first-level > a.active {
+  cursor: pointer;
+  background: #26334f;
+}
+
+.menu-first-level > a:hover > i:nth-of-type(2) {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 2px;
+  float: right;
+  width: 18px;
+  height: 18px;
+  /* background: url('../../../../assets/images/icon_down_up.png') no-repeat center; */
+}
+
+.menu-icon1 {
+  width: 22px;
+  height: 22px;
+  background: url('../../../../assets/images/icon_expanded_menu.png') 32px 200px;
+}
+
+.menu-icon2 {
+  width: 22px;
+  height: 22px;
+  background: url('../../../../assets/images/icon_expanded_menu.png') 32px 169px;
+}
+
+.menu-icon3 {
+  width: 22px;
+  height: 22px;
+  background: url('../../../../assets/images/icon_expanded_menu.png') 32px 133px;
+}
+
+.menu-icon4 {
+  width: 22px;
+  height: 22px;
+  /* background: url('../../../../assets/images/icon_expanded_menu.png') 32px 96px; */
+}
+
+.menu-icon5 {
+  width: 22px;
+  height: 22px;
+  /* background: url('../../../../assets/images/sprites/22*22.png') -242px 0px; */
+}
+
+.menu-icon6 {
+  width: 22px;
+  height: 22px;
+   background: url('../../../../assets/images/icon_expanded_menu.png') 32px 63px;
+}
+
+.menu-icon7 {
+  width: 22px;
+  height: 22px;
+  background: url('../../../../assets/images/icon_expanded_menu.png') 32px 32px;
+}
+
+.menu-icon8 {
+  width: 22px;
+  height: 22px;
+  /* background: url('../../../../assets/images/sprites/22*22.png') -902px 0px; */
+}
+
+.menu-icon9 {
+  width: 22px;
+  height: 22px;
+  margin-top: -2px;
+  background: url('../../../../assets/images/icon_setting.png')no-repeat center;
+}
+
+.menu-first-level > a > i:first-child {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/* 第一级菜单右侧箭头 */
+.menu-first-level:hover > div, .menu-first-level:active > div, .menu-first-level:focus > div, .menu-first-level-arrow {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  /*background: url('../../../../assets/images/sprites/18*18.png') -36px 0px;*/
+}
+
+.menu-second-level {
+  margin-top: 0;
+  position: relative;
+  background: #2a3854;
+}
+
+.menu-second-level > a {
+  display: block;
+  padding: 15px 0 14px 58px;
+  position: relative;
+  font-size: 13px;
+  text-decoration: none;
+  color: #fff;
+}
+
+/*悬停二级菜单效果*/ /*当前路由的背景*/
+.menu-second-level > a:hover, .menu-second-level > a.active {
+  color: #45c8dc;
+  cursor: pointer;
+}
+
+.menu-second-level > a:hover:before, .menu-second-level > a.active:before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  background: #45c8dc;
+  left: 34px;
+  top: 21px;
+}
+
+.menu-third-level > a {
+  display: block;
+  padding: 10px 0 5px 45px;
+  border-top: 1px dotted #e4e4e4;
+  position: relative;
+  font-size: 13px;
+  text-decoration: none;
+  color: #fff;
+}
+
+/*悬停三级菜单效果*/ /*当前路由的背景*/
+.menu-third-level > a:hover, .menu-third-level > a.active {
+  color: #45c8dc;
+  cursor: pointer;
+}
+
+.menu-third-level > a.noPermissions, .menu-first-level > a.noPermissions, .menu-second-level > a.noPermissions {
+  display: none;
+}
+
+.menu-open {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 2px;
+  float: right;
+  width: 18px;
+  height: 18px;
+  margin-top: 16px;
+  background: url('../../../../assets/images/icon_down_arrow.png') no-repeat center;
+}
+
+.menu-close {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 2px;
+  float: right;
+  width: 18px;
+  height: 18px;
+  margin-top: 16px;
+  background: url('../../../../assets/images/icon_down_up.png') no-repeat center;
+}
+
+.icon-add-close {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 20px;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 2px;
+  height: 20px;
+  background: url('../../../../assets/images/icon_group1.png') 94px -48px;
+  margin-left: -23px;
+}
+
+.icon-add-open {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 20px;
+  text-align: center;
+  font-weight: normal;
+  margin-right: 2px;
+  height: 20px;
+  background: url('../../../../assets/images/icon_group1.png') 125px -18px;
+  margin-left: -23px;
+}

@@ -1,0 +1,76 @@
+<div class="header">
+  <app-crumb [level1Name]="'员工管理'" [level1RelativePath]="'../../'" [level2Name]="'编辑员工'"></app-crumb>
+</div>
+<div class="content-flow">
+  <div class="list-container">
+    <form class="form-horizontal z-form-horizontal" #editEmployeeForm="ngForm" autocomplete="off">
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><b>* </b>账号：</label>
+        <label class="control-label" style="padding-left: 10px;">{{userParams.username}}</label>
+        <!-- <div class="col-sm-5 input-group">
+          <label class="control-label content-label">{{userParams.username}}</label>
+        </div> -->
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><b>* </b>姓名：</label>
+        <div class="col-sm-5 input-group">
+          <input class="form-control" type="text" appIgnoreSpace placeholder="请输入姓名" maxlength="20"
+            [(ngModel)]="userParams.realname" name="realname" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><b>* </b>联系方式：</label>
+        <div class="col-sm-5 input-group">
+          <input class="form-control" type="text" appIgnoreSpace placeholder="请输入联系方式，以逗号分割" maxlength="50"
+            [(ngModel)]="userParams.telephone" name="telephone" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><b>* </b>邮箱：</label>
+        <div class="col-sm-5 input-group">
+          <input class="form-control" type="text" appIgnoreSpace placeholder="请输入邮箱" maxlength="50"
+            [(ngModel)]="userParams.email" name="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label"><b>* </b>权限：</label>
+        <div class="col-sm-9 input-group check-group">
+          <ng-container *ngFor="let permission of permissionList;let index=index">
+            <app-beautify-checkbox [name]="permission.source.chinese_name" [extData]="permission"
+              [checked]="permission.isChecked" (checkChange)="onPermissionChange($event)"></app-beautify-checkbox>
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">部门：</label>
+        <div class="col-sm-5 input-group">
+          <input class="form-control" type="text" appIgnoreSpace placeholder="请输入部门" maxlength="20"
+            [(ngModel)]="userParams.department" name="department">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">备注：</label>
+        <div class="col-sm-5 input-group">
+          <textarea class="form-control" type="text" rows="5" placeholder="100字以内" maxlength="100"
+            [(ngModel)]="userParams.remarks" name="remarks">
+          </textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">添加时间：</label>
+        <label class="control-label" style="padding-left: 10px;">
+          {{user.created_time*1000|date:"y-MM-dd HH:mm:ss"}}
+        </label>
+      </div>
+      <div class="col-sm-8 form-footer">
+        <button type="button" class="btn btn-inverse" (click)="onCancelBtnClick()">
+          取消
+        </button>
+        <button type="submit" class="btn btn-primary" (appZDebounceClick)="onEditEmployeeFormSubmit()"
+          [disabled]="!editEmployeeForm.form.valid||!permissionChecked">
+          保存
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

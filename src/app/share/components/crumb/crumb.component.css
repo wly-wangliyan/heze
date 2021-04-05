@@ -1,0 +1,28 @@
+.breadcrumb {
+  padding: 8px 20px 8px 50px;
+  background: #fff url(../../../../assets/images/crumb_bg.png) 15px center no-repeat;
+}
+
+.breadcrumb > li, .breadcrumb > li > a {
+  color: #999;
+}
+
+.breadcrumb > li + li:before {
+  color: #999;
+  content: "> ";
+  padding: 0 3px 0 5px;
+}
+
+.breadcrumb a, .breadcrumb > .active {
+  color: #333;
+}
+
+.breadcrumb a:hover {
+  cursor: pointer;
+  color: #45c8dc;
+  text-decoration: underline;
+}
+
+.breadcrumb li:last-child > a:hover {
+  cursor: default;
+}

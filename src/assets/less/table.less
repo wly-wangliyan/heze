@@ -1,0 +1,244 @@
+/*表格*/
+.table {
+  width: 100% !important;
+  text-align: center;
+}
+
+.table>thead>tr>th {
+  color: #1A1A1A;
+  padding: 0;
+  font-size: 16px;
+  height: 45px;
+  background: #fff;
+  line-height: 45px;
+  border-bottom: none;
+  border: 1px solid #E5E6EB !important;
+  text-align: center;
+}
+
+.table .special-text-index {
+  width: 100px;
+  text-align: center;
+}
+
+.table>tbody {
+  background-color: #fff;
+}
+
+.table>tbody>tr>td {
+  text-align: center;
+  height: 60px;
+  font-size: 16px;
+  line-height: 60px;
+  border: 1px solid #E5E6EB;
+  padding: 0;
+}
+
+.td-operation {
+  padding: 0 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.td-operation button {
+  border: 0;
+  // margin-top: 5px;
+  margin-right: 10px;
+  outline: none;
+  display: inline-block;
+}
+
+.td-operation button:last-child {
+  margin-right: 0px;
+}
+
+.td-operation a {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.td-operation a:hover {
+  text-decoration: underline;
+}
+
+.table>tbody>tr>td {
+  vertical-align: middle;
+  border: 1px solid #E5E6EB;
+}
+
+/*nz-table*/
+
+.ant-table table {
+  background-color: #fff;
+  border-radius: 4px 4px 4px 4px;
+}
+
+.ant-empty-normal {
+  margin-top: 150px;
+}
+.ant-spin-nested-loading{
+  height: 500px;
+}
+
+.ant-spin-nested-loading>div>.ant-spin .ant-spin-dot {
+  margin-top: 77px;
+}
+
+.ant-table-tbody {
+  border-radius:0 0 4px 4px;
+  color: #363f5e;
+}
+
+.ant-table-thead>tr,
+.ant-table-thead>tr>th {
+  background: #fafbfe !important;
+  font-family: MicrosoftYaHei-Bold;
+  color: #272727;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 8px;
+  border-bottom: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+.ant-table-tbody>tr,
+.ant-table-tbody>tr>td {
+  font-family: MicrosoftYaHei;
+  // color: #1A1A1A;
+  padding: 0;
+  font-size: 14px;
+  height: 38px;
+  padding-left: 8px;
+  border-right: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+.ant-table-tbody>tr:last-child>td:first-child {
+  border-bottom-left-radius: 4px;
+}
+
+.ant-table-tbody>tr:last-child>td:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+.ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td {
+  background: #fbfbfb !important;
+}
+
+.ant-table-placeholder {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+}
+
+// 奇数行背景色
+/*
+.table tr:nth-child(odd) {
+  background: #F8F9FB;
+}*/
+
+// 分页器
+.ant-pagination {
+  margin-right: 5px !important;
+}
+
+.ant-pagination a {
+  color: #B3B3B3 !important;
+}
+
+.ant-pagination-item {
+  font-family: MicrosoftYaHei;
+  border-color: #E5E6EB;
+  background-color: #fff;
+  color: #B3B3B3;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.ant-pagination-item-active,
+.ant-pagination-item:hover {
+  font-weight: 400;
+  border-color: #45c8dc;
+  background-color: #F8F9FB !important;
+}
+
+.ant-pagination-item-link:hover {
+  border-color: #45c8dc !important;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link:hover {
+  border-color: #E5E6EB !important;
+}
+
+.ant-pagination-item-active a {
+  color: #333 !important;
+}
+
+/* 表格 详情 */
+.table-detail-container {
+  background: #fff;
+  padding: 42px 0 20px 0;
+  margin: 20px;
+  height: calc(100% - 40px);
+  border-radius: 4px;
+}
+
+.table-detail-container>.table {
+  width: 1066px !important;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.table-detail-container>.table>tbody>tr>td {
+  line-height: 27px;
+  color: #666 !important;
+}
+
+.table-detail-container>.table>tbody>tr>td:first-child {
+  background: #FAFBFE !important;
+  text-align: right;
+  width: 201px !important;
+  border-right: 1px solid #f5f6fc;
+  color: #333;
+}
+
+.table-detail-container>.table>tbody>tr>td:last-child {
+  padding-left: 15px;
+}
+
+/* 排序小图标 */
+.btn-icon-sort-container {
+  cursor: pointer;
+}
+
+.btn-icon-sort {
+  width: 13px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-icon-disabled {
+  background: url('/assets/images/common_btn3.png') 26px -6px;
+}
+
+.btn-icon-up {
+  background: url('/assets/images/common_btn3.png') -53px -6px;
+}
+
+.btn-icon-down {
+  background: url('/assets/images/common_btn3.png') -16px -6px;
+}
+
+.td-btn-icon {
+  position: relative;
+}
+
+.td-btn-icon>button {
+  margin-top: 9px;
+  position: absolute;
+}

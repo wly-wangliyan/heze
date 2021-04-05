@@ -1,0 +1,473 @@
+/* You can add global styles to this file, and also import other style files */
+@theme-color: #45c8dc;
+@import 'assets/less/table';
+@import 'assets/less/modal';
+@import 'assets/less/full-screen';
+@import 'assets/less/echarts';
+
+.amap-logo {
+  display: none;
+  opacity: 0 !important;
+}
+
+.amap-copyright {
+  opacity: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+  overflow: hidden;
+  overflow-x: auto;
+  font-family: 'Microsoft YaHei', '微软雅黑', 'MicrosoftJhengHei', '华文细黑', 'STHeiti', 'MingLiu';
+  color: #363f5e;
+  min-width: 1300px;
+}
+
+/**** 页面按钮 ****/
+b {
+  color: red;
+}
+
+.btn {
+  width: 104px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.btn-inverse {
+  color: #666;
+  background: #fff;
+  border: 1px solid #999999;
+}
+
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active {
+  color: #666;
+  background: #fafafa;
+}
+
+.btn-success {
+  width: 80px;
+  height: 34px;
+  background: #81c784;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  color: #fff
+}
+
+.btn-primary {
+  color: #fff;
+  background: @theme-color;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus,
+.btn-primary:active:hover {
+  background: #3baabb;
+}
+
+.btn-primary[disabled],
+.btn-primary[disabled]:hover {
+  color: #fff;
+  background-color: #c3c3c3;
+}
+
+/* 导航栏上的按钮 */
+
+.switch-btn-group {
+  float: right;
+}
+
+.switch-btn-group>button {
+  float: left;
+}
+
+.switch-btn-group>button:nth-child(n) {
+  margin-right: 5px;
+}
+
+.switch-btn-group>button:last-child {
+  margin-right: 15px;
+}
+
+.switch-btn {
+  width: 92px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #666;
+  border-radius: 2px;
+  margin-top: 8px;
+  border: 1px solid #DDDDDD !important;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  border-radius: 4px;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #ddd;
+  }
+}
+
+.switch-btn:not(:disabled):hover {
+  background: #fafafa;
+}
+
+.primary-btn:not(:disabled) {
+  color: #fff;
+  background: @theme-color;
+
+  &:hover {
+    color: #fff;
+    background: #3baabb;
+  }
+}
+
+/**** 正文 ****/
+
+.header {
+  height: 50px;
+  background: #fff;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 13px;
+  line-height: 49px;
+  overflow: hidden;
+}
+
+.content-flow {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100% - 40px);
+}
+
+.list-container {
+  margin: 20px;
+  padding: 5px 20px 0 20px;
+  background: #fff;
+  min-height: calc(100% - 40px);
+  overflow: auto;
+  border-radius: 4px;
+}
+
+/**** 滚动条 ****/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .05);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+::-webkit-scrollbar-track:hover {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4);
+  background: rgba(0, 0, 0, .01);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+
+/**条件检索 */
+.search-form {
+  line-height: 50px;
+  background: #fff;
+  width: 100%;
+  padding: 0 15px 10px 15px;
+  margin-bottom: 0px;
+}
+
+.search-form .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.search-form .form-time-group {
+  margin-right: 20px;
+}
+
+.form-control,
+.search-form .form-control {
+  display: inline-block;
+  height: 32px;
+  font-size: 14px;
+  vertical-align: middle;
+  border-color: #eeeff5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 4px 8px;
+  margin-right: 20px;
+  color: #333;
+}
+
+.search-form .form-control {
+  width: 147px;
+  border-color: #eeeff5;
+}
+
+.ant-input {
+  border-color: #eeeff5;
+}
+
+.form-control:focus,
+.form-control:hover {
+  border-color: #45c8dc;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.search-form span {
+  color: #333;
+}
+
+.search-form .form-separator {
+  margin: auto 10px;
+}
+
+.search-form select {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.search-form button {
+  width: 80px;
+  height: 32px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 32px;
+  text-indent: 19px;
+  font-weight: 400;
+  outline: none;
+  background: #45c8dc url(/assets/images/icon_search.png) 10px 6px no-repeat;
+}
+
+.search-form button:hover {
+  background: #3baabb url(/assets/images/icon_search.png) 10px 6px no-repeat;
+}
+
+/* 时间日期*/
+
+.ant-calendar-picker-input {
+  color: #333;
+}
+
+.ant-calendar-picker-input:hover:not(.ant-input-disabled),
+.ant-calendar-picker-input:focus:not(.ant-input-disabled) {
+  border-color: #45c8dc !important;
+}
+
+.ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled) {
+  border-color: #45c8dc !important;
+  border-right-width: 1px !important;
+  outline: 0;
+  box-shadow: none;
+}
+
+:not(.ant-calendar-disabled-cell).ant-calendar-today .ant-calendar-date {
+  color: rgba(0, 0, 0, .65);
+  font-weight: 700;
+  border-color: @theme-color;
+}
+
+.ant-calendar-date:active {
+  background: @theme-color;
+}
+
+.ant-calendar .ant-calendar-ok-btn {
+  border: 1px solid @theme-color;
+  background: @theme-color;
+  color: #fff !important;
+
+  &:focus,
+  &:hover {
+    border: 1px solid #2cd0dc;
+    background: #2cd0dc;
+  }
+}
+
+.ant-calendar-time-picker-btn,
+.ant-calendar-time-picker-btn:hover {
+  color: @theme-color;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #999 !important;
+}
+
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #999 !important;
+}
+
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #999 !important;
+}
+
+input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #999 !important;
+}
+
+/* 按钮图标 */
+.icon-view {
+  width: 22px;
+  height: 22px;
+  //background: url('/assets/images/sprites/22*22.png') -792px 0px;
+}
+
+.icon-view:hover {
+  //background: url('/assets/images/sprites/22*22.png') -814px 0px;
+}
+
+/* 增删改主体 */
+.z-form-horizontal {
+  margin: 80px auto auto 100px;
+  width: 1000px;
+}
+
+.z-form-horizontal label.control-label {
+  color: #333;
+  font-weight: normal;
+}
+
+.z-form-horizontal label.content-label {
+  color: #333;
+  text-align: left;
+}
+
+.z-form-horizontal .form-footer {}
+
+.z-form-horizontal .form-footer button {
+  float: right;
+  margin-left: 40px;
+}
+
+.z-form-horizontal .check-group {
+  height: 34px;
+}
+
+.z-form-horizontal .check-group label,
+.check-group input {
+  cursor: pointer;
+  color: #555 !important;
+}
+
+.z-form-horizontal .check-group label[disabled] {
+  cursor: not-allowed;
+}
+
+.z-form-horizontal .check-group label {
+  margin-right: 5px;
+}
+
+/*是否有该权限，没有隐藏*/
+.noPermissions {
+  display: none !important;
+}
+
+ul {
+  list-style: none;
+}
+
+:host ::ng-deep .cdk-overlay-container {
+  z-index: 1100 !important;
+}
+
+
+
+.td-operation {
+  padding: 0 8px !important;
+}
+
+.td-operation button {
+  border: 0;
+  margin-top: 5px;
+  margin-right: 10px;
+  outline: none;
+  display: inline-block;
+}
+
+.td-operation button:last-child {
+  margin-right: 0px;
+}
+
+
+.icon-delete {
+  width: 22px;
+  height: 22px;
+  //background: url('/assets/images/sprites/22*22.png') -484px 0px;
+}
+
+.icon-delete:hover {
+  //background: url('/assets/images/sprites/22*22.png') -506px 0px;
+}
+
+.icon-edit {
+  width: 22px;
+  height: 22px;
+  //background: url('/assets/images/sprites/22*22.png') -528px 0px;
+}
+
+.icon-edit:hover {
+  //background: url('/assets/images/sprites/22*22.png') -550px 0px;
+}

@@ -1,0 +1,53 @@
+<div class="modal fade" data-backdrop="false" id="exportModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard='false'>
+  <div>
+    <div class="modal-dialog modal-dialog-style">
+      <div class="modal-content modal-content-style">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">日流量/周转率导出</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" class="form-horizontal" #exportForm="ngForm">
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><b>*</b>时间：</label>
+              <div class="col-sm-4">
+                <select name="export_type" class="form-control" [(ngModel)]="export_type"
+                  (change)="onChangeExportType($event)">
+                  <option [value]=1>按月</option>
+                  <option [value]=2>自定义</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-4" *ngIf="export_type===1">
+                <nz-month-picker [nzDisabledDate]="disabledMonth" [(ngModel)]="export_month" name="export_month"
+                  nzFormat="yyyy-MM" (ngModelChange)="onExportMonthChange($event)" [nzAllowClear]='false'>
+                </nz-month-picker>
+              </div>
+              <ng-container *ngIf="export_type===2">
+                <div class="col-sm-4">
+                  <nz-date-picker name='custom_start_time' [(ngModel)]="custom_start_time" [nzShowToday]=false
+                    [nzDisabledDate]="disabledStartDate" (ngModelChange)="onDateChange()" [nzAllowClear]="false">
+                  </nz-date-picker>
+
+                </div>
+                <span style="float: left;margin-right: 5px;line-height: 32px;">-</span>
+                <div class="col-sm-4">
+                  <nz-date-picker name='custom_end_time' [(ngModel)]="custom_end_time" [nzShowToday]=false
+                    [nzDisabledDate]="disabledEndDate" (ngModelChange)="onDateChange()" [nzAllowClear]="false">
+                  </nz-date-picker>
+                </div>
+              </ng-container>
+            </div>
+          </form>
+        </div>
+        <div class=" modal-footer">
+          <button type="button" class="btn btn-primary" (appZDebounceClick)="onCheckExportClick()">导出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

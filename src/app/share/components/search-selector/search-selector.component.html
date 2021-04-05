@@ -1,0 +1,30 @@
+<div class="selector-container">
+  <!--<select *ngIf="isShowlassification" class="form-control" [value]="currentState?.currentType"-->
+          <!--(change)="onTypeSelectChanged($event)">-->
+    <!--<option *ngIf="currentState?.showPark" [value]="SearchSelectorType.Park">按停车场</option>-->
+    <!--<option *ngIf="currentState?.showDistrict" [value]="SearchSelectorType.Region">按行政区</option>-->
+    <!--<option *ngIf="currentState?.showGroup" [value]="SearchSelectorType.Group">按分组</option>-->
+  <!--</select>-->
+  <ng-container [ngSwitch]="currentState?.currentType">
+    <select *ngSwitchCase="SearchSelectorType.Park" class="form-control" [value]="currentState?.currentValue"
+            [disabled]="currentState?.disabledPark"
+            (change)="onTypeContentSelectChanged($event)">
+      <option *ngFor="let region of currentState?.regionList" [value]="region?.region_id">{{region?.name}}</option>
+    </select>
+    <ng-container *ngIf="groups.length>0">
+      <select *ngSwitchCase="SearchSelectorType.Group" class="form-control" [value]="currentState?.currentValue"
+              [disabled]="currentState?.disabledGroup"
+              (change)="onTypeContentSelectChanged($event)">
+        <option *ngIf="currentState?.disabledGroup" value="">全部</option>
+        <option *ngFor="let group of currentState?.groupList" [value]="group?.parking_group_id">
+          {{group?.parking_group_name}}{{group?.is_deleted?'（已删除）':''}}
+        </option>
+      </select>
+    </ng-container>
+    <select *ngSwitchCase="SearchSelectorType.Region" class="form-control" [value]="currentState?.currentValue"
+            [disabled]="currentState?.disabledDistrict"
+            (change)="onTypeContentSelectChanged($event)">
+      <option *ngFor="let region of currentState?.regionList" [value]="region?.region_id">{{region?.name}}</option>
+    </select>
+  </ng-container>
+</div>

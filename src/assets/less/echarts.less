@@ -1,0 +1,128 @@
+/* 数据统计报表 */
+.statistics-content {
+  margin: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.statistics-content-header {
+  height: 40px;
+  padding-left: 8px;
+  position: relative;
+}
+
+.statistics-content-header:before {
+  content: ' ';
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  margin-top: 18px;
+  background: #45c8dc;
+}
+
+.statistics-content-header-combine {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  height: 39px;
+}
+
+.statistics-content-header-description {
+  line-height: 38px;
+  margin: auto 20px;
+  color: #9a9a9a;
+}
+
+.statistics-content-header>h5 {
+  font-size: 14px;
+  font-weight: bolder;
+  text-indent: 1em;
+  margin-top: 21px;
+  display: inline-block;
+}
+
+.statistics-content-header>div {
+  float: right;
+  margin: 12px;
+}
+
+.statistics-content>.statistics-list-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.statistics-content>.statistics-list-container>.table {
+  border: 1px solid #F5F6FC;
+}
+
+/* 内容面板 */
+.statistics-content-panel {
+  border: 1px solid #c9c9c9;
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.statistics-content-panel>ul {
+  float: left;
+  height: 100%;
+  background: url("/assets/images/header_bg.jpg") repeat-x;
+  text-align: center;
+}
+
+.statistics-content-panel>ul:nth-child(n+2) {
+  border-left: 1px solid #c9c9c9;
+}
+
+.statistics-chart {
+  width: 98%;
+  height: 500px;
+  margin-top: 15px;
+}
+
+/* 导航按钮 */
+.statistics-tab-btn {
+  width: auto;
+  height: 34px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.statistics-tab-btn>li {
+  float: left;
+  height: 32px;
+  width: 150px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #eeeff5;
+  border-right: none;
+  cursor: pointer;
+  color: #999;
+  background: #f8f8f8;
+  /*background: url('/assets/images/tab_btn_bg.png') repeat-x;*/
+  outline: none;
+}
+
+.statistics-tab-btn>li:first-child {
+  border-radius: 15px 0 0 15px;
+}
+
+.statistics-tab-btn>li:last-child {
+  border-right: 1px solid #eeeff5;
+  border-radius: 0 15px 15px 0;
+}
+
+.statistics-tab-btn>li:only-child {
+  border-radius: 15px;
+}
+
+.statistics-tab-btn>li.active {
+  color: #272727;
+  background: #fff;
+}
+
+.statistics-subTab-layout {
+  margin-left: 15px;
+  margin-top: 15px;
+}

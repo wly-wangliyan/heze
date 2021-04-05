@@ -1,0 +1,73 @@
+<div class="content-flow">
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>流量趋势</h5>
+      <div class="date-picker">
+        <nz-date-picker [(ngModel)]="startDate" [nzShowToday]=false [nzDisabledDate]="disabledStartDate"
+          name='start_time'></nz-date-picker>
+        <span class='line'>-</span>
+        <nz-date-picker [(ngModel)]="endDate" [nzShowToday]=false [nzDisabledDate]="disabledEndDate" name='end_time'>
+        </nz-date-picker>
+        <select name="cycle" class="form-control" [value]="currentCycle"
+          (change)="onStatisticsCycleSelectChange($event)">
+          <option value="0">按天统计</option>
+          <option value="1">按周统计</option>
+          <option value="2">按月统计</option>
+        </select>
+        <button type="button" class="btn btn-primary" (click)="onSelectDateButtonClick()">确定</button>
+      </div>
+    </div>
+    <ul class="statistics-tab-btn statistics-subTab-layout">
+      <li [class.active]="currentSort==2" (click)="onSelectTypeClick(2)">路外流量</li>
+      <li [class.active]="currentSort==1" (click)="onSelectTypeClick(1)">路内流量</li>
+      <li [class.active]="currentSort==3" (click)="onSelectTypeClick(3)">流量成分构成</li>
+    </ul>
+    <div echarts *ngIf="currentSort != 3" class="statistics-chart" [options]="lineChartOptions"
+      (chartInit)="onLineChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+    <div echarts *ngIf="currentSort == 3" class="statistics-chart" [options]="barChartOptions"
+      (chartInit)="onBarChartInit($event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...
+    </div>
+  </div>
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>流量明细</h5>
+      <button *ngIf="false" type="button" class="btn btn-primary export-btn" (click)="onExportButtonClick()">导出</button>
+    </div>
+    <div class="statistics-list-container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>路外停车场总数</th>
+            <th>路外流量（辆）</th>
+            <th>路内停车场总数</th>
+            <th>路内流量（辆）</th>
+            <th>总计（辆）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of currentPageList">
+            <td>{{data.date}}</td>
+            <td>{{data.source ? data.source.road_outside_parking_count : 0}}</td>
+            <td>{{data.source ? data.source.road_outside_entry_flow : 0}}</td>
+            <td>{{data.source ? data.source.road_inside_parking_count : 0}}</td>
+            <td>{{data.source ? data.source.road_inside_entry_flow : 0}}</td>
+            <td>{{data.source ? data.source.total_entry_flow : 0}}</td>
+          </tr>
+          <tr *ngIf="pageCount == currentPage">
+            <td>总计</td>
+            <td>--</td>
+            <td>{{tableTotalOutsideFlow}}</td>
+            <td>--</td>
+            <td>{{tableTotalInsideFlow}}</td>
+            <td>{{tableTotalInsideFlow+tableTotalOutsideFlow}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagination [currentPage]="currentPage" [pageCount]="pageCount" (pageSelected)="onPageSelected($event)">
+      </app-pagination>
+    </div>
+  </div>
+
+</div>

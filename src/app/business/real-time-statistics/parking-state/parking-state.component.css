@@ -1,0 +1,33 @@
+.search-form {
+  margin-top: 0;
+}
+
+.parking-count-container {
+  width: calc(100% - 40px);
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.parking-count-container > li {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.parking-count-container > li:last-child {
+  margin-right: 0;
+}
+
+.parking-status {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.parking-status-break {
+  background: url('/assets/images/parking_status_break.png') no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}

@@ -1,0 +1,31 @@
+<div class="header">
+  <app-crumb [level1Name]="'实时统计'" [level2Name]="'热力图'"></app-crumb>
+</div>
+<div class="content-flow">
+  <div class="chart-container" id="map-container">
+  </div>
+  <div class="chart-search-container">
+    <app-city-select (citySelected)="onCitySelected($event)" (initRegionComplete)="onInitRegionComplete($event)"></app-city-select>
+    <app-parking-select style="margin-left: 5px" [region]="currentRegion" (selectParkingChanged)="onSelectParkingChanged($event)" (activated)="onSelectParkingActivated()"></app-parking-select>
+  </div>
+  <div class="chart-layer-container">
+    <div class="chart-layer-btn"
+         (click)="onHeadMapLayerBtnClick()">
+      <i
+        [class.heat-icon-normal]="isShowHeatMap"
+        [class.heat-icon-push]="!isShowHeatMap"></i>
+    </div>
+    <div class="chart-layer-btn"
+         (click)="onParkingLayerBtnClick()">
+      <i
+        [class.parking-icon-normal]="isShowParking"
+        [class.parking-icon-push]="!isShowParking">
+      </i>
+    </div>
+    <div class="chart-layer-btn"
+         (click)="onTrafficLayerBtnClick()">
+      <i [class.state-icon-normal]="isShowRoadState"
+         [class.state-icon-push]="!isShowRoadState"></i>
+    </div>
+  </div>
+</div>

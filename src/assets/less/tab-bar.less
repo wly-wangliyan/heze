@@ -1,0 +1,53 @@
+.tab-bar {
+  padding: 20px 32px 20px 20px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+}
+
+/* 导航按钮 */
+.tab-bar > ul {
+  height: 34px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.tab-bar > ul > li {
+  float: left;
+  height: 32px;
+  width: 150px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #45c8dc;
+  border-right: none;
+  cursor: pointer;
+  color: #45c8dc;
+  outline: none;
+  background: #fff;
+}
+
+.tab-bar > ul > li:hover {
+  background: #F5F6FC;
+}
+
+.tab-bar > ul > li:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.tab-bar > ul > li:last-child {
+  border-right: 1px solid #45c8dc;
+  border-radius: 0 4px 4px 0;
+}
+
+.tab-bar > ul > li:only-child {
+  border-radius: 4px;
+}
+
+.tab-bar > ul > li.active {
+  color: #fff;
+  background: #45c8dc;
+}
+
+.tab-bar > ul > li.active:hover {
+  background: #3baabb;
+}

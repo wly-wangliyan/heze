@@ -1,0 +1,11 @@
+<div class="full-screen-item" [ngStyle]="{width:width+'px',height:height+'px'}">
+  <div class="full-screen-item-header">
+    <span>{{title}}</span>
+    <i class="point-top"></i>
+    <i class="point-bottom"></i>
+    <b [class]="'header-line'+headerBgType"></b>
+  </div>
+  <div class="full-screen-item-content" [ngStyle]="{height:(height-32)+'px'}">
+    <ng-content></ng-content>
+  </div>
+</div>

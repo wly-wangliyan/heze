@@ -1,0 +1,45 @@
+<div class="content-flow">
+  <div class="table-detail-container">
+    <table class="table">
+      <tr>
+        <td class="active td-border-right">备案有效期：</td>
+        <td class="td-border-right">
+          <ng-container *ngIf="!parkingRelationInfo.parking_relation.start_time || !parkingRelationInfo.parking_relation.end_time">--</ng-container>
+          <ng-container *ngIf="parkingRelationInfo.parking_relation.start_time && parkingRelationInfo.parking_relation.end_time">
+            {{parkingRelationInfo.parking_relation.start_time*1000 | date: 'yyyy-MM-dd'}} 至
+            {{(parkingRelationInfo.parking_relation.end_time-1) *1000 | date: 'yyyy-MM-dd'}}
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">备案照片：</td>
+        <td class="td-border-right">
+          <ng-container *ngIf="!parkingRelationInfo.images || parkingRelationInfo.images.length < 1"
+                        style="margin-left: 9px">--
+          </ng-container>
+          <ng-container *ngIf="parkingRelationInfo.images && parkingRelationInfo.images.length > 0">
+            <app-z-photo-select [imageUrls]="parkingRelationInfo.images"></app-z-photo-select>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">当前所属物业公司：</td>
+        <td class="td-border-right">
+          {{parkingRelationInfo.companyName|zPlaceholder}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">当前所属系统名称：</td>
+        <td class="td-border-right">
+          {{parkingRelationInfo.platformName|zPlaceholder}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">当前所属厂商名称：</td>
+        <td class="td-border-right">
+          {{parkingRelationInfo.manufacturerName|zPlaceholder}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

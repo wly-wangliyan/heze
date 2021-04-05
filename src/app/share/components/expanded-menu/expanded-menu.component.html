@@ -1,0 +1,43 @@
+<div class="expanded-menu">
+  <div *ngFor="let firstMenu of menuItems"
+       [ngClass]="{noPermissions:!authService.checkPermissions(firstMenu.data.permissionSettings)}">
+    <div class="menu-first-level">
+      <a (click)="navigatedByMenuItem(firstMenu)"
+         [ngClass]="{'active': firstMenu.isSelect||firstMenu.isExpanded}">
+        <i [ngClass]="firstMenu.data.normalIcon"></i>
+        {{firstMenu.data.menuName}}<span *ngIf="firstMenu.data.isWarning" class="device-error"></span>
+        <i *ngIf="firstMenu.lowerLevels"
+           [ngClass]="{'menu-close': firstMenu.isSelect||firstMenu.isExpanded,'menu-open': !(firstMenu.isSelect||firstMenu.isExpanded)}"></i>
+      </a>
+      <!-- 右侧的显示效果 -->
+      <div [ngClass]="{'menu-first-level-arrow':firstMenu.isSelect||firstMenu.isExpanded}"
+           [ngStyle]="{display: (firstMenu.isSelect||firstMenu.isExpanded)? 'block':'none'}">
+        <div class="bg-main_menu_right_arrow"></div>
+      </div>
+    </div>
+    <div #firstLevel [ngStyle]="{display:firstMenu.isDisplay?'block':'none'}">
+      <div *ngFor="let secondMenu of firstMenu.lowerLevels"
+           [ngClass]="{noPermissions:!authService.checkPermissions(secondMenu.data.permissionSettings)}">
+        <div class="menu-second-level">
+          <a (click)="navigatedByMenuItem(secondMenu)"
+             [ngClass]="{'active':secondMenu.isSelect||secondMenu.isExpanded}">
+            <i [ngStyle]="{visibility: secondMenu.lowerLevels ? 'visible':'hidden'}"
+               [ngClass]="{'icon-add-open': secondMenu.isSelect||secondMenu.isExpanded,'icon-add-close': !(secondMenu.isSelect||secondMenu.isExpanded)}"></i>
+            {{secondMenu.data.menuName}}<span *ngIf="secondMenu.data.isWarning" class="device-error"></span>
+          </a>
+          <div #secondLevel [ngStyle]="{display: secondMenu.isDisplay?'block':'none'}">
+            <div *ngFor="let thirdMenu of secondMenu.lowerLevels"
+                 [ngClass]="{noPermissions:!authService.checkPermissions(thirdMenu.data.permissionSettings)}">
+              <div class="menu-third-level">
+                <a (click)="navigatedByMenuItem(thirdMenu)"
+                   [ngClass]="{'active':thirdMenu.isSelect||thirdMenu.isExpanded}">
+                  {{thirdMenu.data.menuName}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<span (click)="onInputChange()" [ngStyle]="{width:isBlock?'100%':'auto'}"
+      [class.checked]="currentCheckboxState === CheckboxState.checked"
+      [class.unchecked]="currentCheckboxState === CheckboxState.unchecked"
+      [class.disabled]="isDisabled">
+  <i>{{name}}</i>
+  <input type="checkbox">
+</span>

@@ -1,0 +1,68 @@
+@media (min-width: 768px) {
+  .chart-container {
+    width: 1064px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .chart-container {
+    width: 1064px;
+  }
+}
+
+@media (min-width: 1660px) {
+  .chart-container {
+    min-width: 1578px;
+  }
+}
+
+.chart-container {
+  width: 100%;
+  padding: 12px 42px 20px 42px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.top-statistics {
+  width: calc( 100% - 16px);
+  height: 110px;
+  margin: 12px auto;
+}
+
+.chart-item {
+  flex: 1;
+  width: 482px;
+  height: 300px;
+  margin: 8px 8px 10px 8px;
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.chart-item-header {
+  height: 40px;
+  width: 100%;
+  /*background: url('../../../../assets/images/navi_bar_bg.jpg');*/
+  /*border-bottom: 1px solid #ddd;*/
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bolder;
+  text-indent: 1em;
+  line-height: 40px;
+}
+
+.chart-item-header:before {
+  content: ' ';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: -5px;
+  background: #45c8dc;
+}
+
+.chart-item-content {
+  height: 250px;
+  min-width: 482px;
+  overflow: hidden;
+}

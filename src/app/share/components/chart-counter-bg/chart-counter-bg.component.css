@@ -1,0 +1,77 @@
+.chart-bg-wrap {
+  width: 100%;
+  height: 80px;
+  border-radius: 4px;
+  font-size: 24px;
+  text-align: center;
+  outline: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #45C8DC;
+}
+
+.chart-bg-wrap div:first-child {
+  line-height: 27px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.chart-bg-wrap div:last-child {
+  flex: 1;
+  font-size: 24px;
+  padding-top: 10px;
+  color: #45C8DC;
+}
+
+.free-bg {
+  background: #45D93E;
+}
+
+.loose-bg {
+  background: #ffb21c;
+}
+
+.nervous-bg {
+  background: #F26061;
+}
+
+.count-bg div:last-child {
+  color: #45C8DC;
+  background: url('/assets/images/counter/count_bg.png') no-repeat center;
+  background-size: cover;
+}
+
+.free-bg div:last-child {
+  color: #45D93E;
+  background: url('/assets/images/counter/free_bg.png') no-repeat center;
+  background-size: cover;
+}
+
+.loose-bg div:last-child {
+  color: #FFB21C;
+  background: url('/assets/images/counter/loose_bg.png') no-repeat center;
+  background-size: cover;
+}
+
+.nervous-bg div:last-child {
+  color: #F26061;
+  background: url('/assets/images/counter/nervous_bg.png') no-repeat center;
+  background-size: cover;
+}
+
+.count-bg {
+  border: 2px solid #45C8DC;
+}
+
+.free-bg {
+  border: 2px solid #45D93E;
+}
+
+.loose-bg {
+  border: 2px solid #FFB21C;
+}
+
+.nervous-bg {
+  border: 2px solid #F26061;
+}

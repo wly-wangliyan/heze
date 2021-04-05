@@ -1,0 +1,34 @@
+<div class="header">
+  <app-crumb [level1Name]="'实时统计'" [level2Name]="'实时信息'"></app-crumb>
+  <app-search-selector [initComponent]="'RealTimeInfoComponent'"
+    [ngStyle]="{visibility: showSelector?'visible':'hidden'}">
+  </app-search-selector>
+</div>
+<div class="content-flow" appShowFullScreenDblclick="screen1">
+  <div class="chart-container">
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header">在线状态</div>
+      <app-chart-online-state></app-chart-online-state>
+    </div>
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header">车位填充率</div>
+      <app-chart-parking-utilization-rate></app-chart-parking-utilization-rate>
+    </div>
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header">实时流量统计</div>
+      <app-chart-flow></app-chart-flow>
+    </div>
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header">出入场时间分布</div>
+      <app-chart-flow-distribution></app-chart-flow-distribution>
+    </div>
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header">用户类型比例</div>
+      <app-chart-user-type-ratio></app-chart-user-type-ratio>
+    </div>
+    <div class="chart-item" (dblclick)="onDetailDoubleClick($event)">
+      <div class="chart-item-header" style="margin-bottom: 0px">实时动态</div>
+      <app-chart-monitor></app-chart-monitor>
+    </div>
+  </div>
+</div>

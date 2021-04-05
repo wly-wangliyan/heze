@@ -1,0 +1,37 @@
+<div class="parking-select-container">
+  <div class="parking-select-header">
+    <input class="form-control" placeholder="请输入停车场名称／位置" [(ngModel)]="keywords" name="keyword" maxlength="50"
+      (blur)="onInputBlur()" (focus)="onInputFocus()" #inputControl>
+    <button class="clear-btn" *ngIf="keywords.length>0" (click)="onClearDataBtnClick()"><i></i>
+      <div class="clear-btn-content"></div>
+    </button>
+    <button class="search-btn" (click)="searchAssistant.submitSearch(true)"><i></i></button>
+  </div>
+  <div></div>
+  <div class="parking-select-list" *ngIf="dataList.length > 0" [@expandListAnimation]="animationState">
+    <div class="parking-select-item" *ngFor="let dataItem of dataList" (click)="onSearchItemClick(dataItem)">
+      <div class="parking-select-item-content">
+        <p>{{dataItem.parking?.parking_name}}</p>
+        <p>{{dataItem.parking?.address}}</p>
+      </div>
+      <div>车位：<span
+          [ngStyle]="{color: dataItem.status|parkingState:true}">{{dataItem.tmp_num}}</span>/{{dataItem.total_tmp_num}}
+      </div>
+    </div>
+    <app-pagination [currentPage]="searchAssistant.currentPage" [pageCount]="searchAssistant.pageCount"
+      (pageSelected)="searchAssistant.pageSelected($event)" [size]="'sm'" #paginationComponent></app-pagination>
+  </div>
+  <div class="parking-expand" *ngIf="dataList.length > 0" [@expandBtnAnimation]="animationState"
+    (click)="onExpandBtnClick()">展开搜索结果
+  </div>
+  <div class="parking-no-result" *ngIf="showNoDataMessage" (click)="showNoDataMessage=false">当前行政区域未搜索到结果</div>
+  <div class="parking-select-association" *ngIf="associationList.length > 0">
+    <div class="parking-select-association-item" *ngFor="let associationItem of associationList"
+      (click)="onAssociationItemClick(associationItem)">
+      <p>
+        <span>{{associationItem.parking?.parking_name}}</span>
+        <span>{{associationItem.parking?.address}}</span>
+      </p>
+    </div>
+  </div>
+</div>

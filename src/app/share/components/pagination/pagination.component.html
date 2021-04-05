@@ -1,0 +1,37 @@
+<div class="clearfix">
+  <ul class="pagination" [ngClass]="{'pagination-sm':size === 'sm'}">
+    <li [class.disabled]="currentPage==1">
+      <a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage-1)">
+        <span aria-hidden="true">前一页</span>
+      </a>
+    </li>
+    <li [class.hide]="currentPage-2<1">
+      <a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage-2)">
+        <span aria-hidden="true">{{currentPage-2}}</span>
+      </a>
+    </li>
+    <li [class.hide]="currentPage-1<1">
+      <a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage-1)">
+        <span aria-hidden="true">{{currentPage-1}}</span>
+      </a>
+    </li>
+    <li [class.active]="currentPage">
+      <a [ngClass]="{'a-sm':size === 'sm'}" ><span aria-hidden="true">{{currentPage}}</span></a>
+    </li>
+    <li [class.hide]="currentPage+1>pageCount">
+      <a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage+1)">
+        <span aria-hidden="true">{{currentPage+1}}</span>
+      </a>
+    </li>
+    <!--<li [class.hide]="currentPage+2>pageCount">-->
+      <!--<a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage+2)">-->
+        <!--<span aria-hidden="true">{{currentPage+2}}</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <li [class.disabled]="currentPage+1>pageCount">
+      <a [ngClass]="{'a-sm':size === 'sm'}" (click)="selectedPageNum(currentPage+1)">
+        <span aria-hidden="true">后一页</span>
+      </a>
+    </li>
+  </ul>
+</div>

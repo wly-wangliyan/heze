@@ -1,0 +1,66 @@
+<div class="content-flow">
+  <div class="rate-container">
+    <div>
+      <div class="statistics-content-header statistics-content-header-combine">
+        <h5>路外填充率</h5>
+      </div>
+      <div class="rate-counter" *ngIf="parkingRateEntity">
+        <ul>
+          <li>
+            <div>停车场总数</div>
+            <div class="rate-counter-num">{{outsideParkingCount}}</div>
+          </li>
+          <li>
+            <div>占用车位数</div>
+            <div class="rate-counter-num">{{parkingRateEntity.outside_used_num}}</div>
+          </li>
+          <li>
+            <div>车位总数</div>
+            <div class="rate-counter-num">{{parkingRateEntity.outside_total_num}}</div>
+          </li>
+        </ul>
+      </div>
+      <div echarts class="rate-chart-item" [options]="outsideChartOptions" (chartInit)="onOutsideChartInit($event)">
+      </div>
+    </div>
+    <div>
+      <div class="statistics-content-header statistics-content-header-combine">
+        <h5>路内填充率</h5>
+      </div>
+      <div class="rate-counter" *ngIf="parkingRateEntity">
+        <ul>
+          <li>
+            <div>停车场总数</div>
+            <div class="rate-counter-num">{{insideParkingCount}}</div>
+          </li>
+          <li>
+            <div>占用车位数</div>
+            <div class="rate-counter-num">{{parkingRateEntity.inside_used_num}}</div>
+          </li>
+          <li>
+            <div>车位总数</div>
+            <div class="rate-counter-num">{{parkingRateEntity.inside_total_num}}</div>
+          </li>
+        </ul>
+      </div>
+      <div echarts class="rate-chart-item" [options]="insideChartOptions" (chartInit)="onInsideChartInit($event)">
+      </div>
+    </div>
+  </div>
+  <div class="statistics-content">
+    <div class="statistics-content-header statistics-content-header-combine">
+      <h5>填充率趋势</h5>
+      <div class="date-picker">
+        <nz-date-picker [(ngModel)]="selectDate" [nzDisabledDate]="disabledTime" (ngModelChange)="onDateChange($event)"
+          [nzShowToday]=false name='select_date'>
+        </nz-date-picker>
+      </div>
+    </div>
+    <ul class="statistics-tab-btn statistics-subTab-layout">
+      <li [class.active]="currentSort==2" (click)="onSelectTypeClick(2)">路外停车场</li>
+      <li [class.active]="currentSort==1" (click)="onSelectTypeClick(1)">路内停车场</li>
+    </ul>
+    <div echarts class="statistics-chart" [options]="trendChartOptions" (chartInit)="onTrendChartInit($event)">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...</div>
+  </div>
+</div>

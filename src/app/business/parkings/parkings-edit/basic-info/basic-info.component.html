@@ -1,0 +1,62 @@
+<div class="content-flow">
+  <div class="table-detail-container">
+    <table class="table">
+      <tr>
+        <td class="active td-border-right">状态：</td>
+        <td class="td-border-right">
+          {{generateStatus(parkingsInfo)}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">添加时间：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.created_time*1000 | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">停车场名称：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.parking_name|zPlaceholder}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">停车场地址：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.province+parkingsInfo.city+parkingsInfo.district}}
+          {{parkingsInfo.address}}
+          <button type="button" class="btn btn-select-map" (click)="openMapModal()">
+            查看位置
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">停车场用地：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.area_type|areaType}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">停车场类型：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.parking_category| parkingType}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">产权联系人：</td>
+        <td class="td-border-right">
+          {{parkingsInfo.contacts|zPlaceholder}}
+        </td>
+      </tr>
+      <tr>
+        <td class="active td-border-right">联系电话：</td>
+        <td class="td-border-right">
+          <span *ngIf="parkingsInfo.telephone">{{parkingsInfo.telephone[0]|zPlaceholder}}</span>
+          <span *ngIf="!parkingsInfo.telephone">--</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 地图组件 -->
+<app-z-map-select-point [mapObj]="mapObj"></app-z-map-select-point>

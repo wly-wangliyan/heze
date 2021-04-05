@@ -1,0 +1,45 @@
+<div class="main-layout">
+  <div class="content-layout">
+    <div class="content-layout-container">
+      <div class="content-dailog-left">
+        <span>Welcome！</span>
+        <span>菏泽智慧停车平台</span>
+      </div>
+      <div class="content-dailog-right">
+        <div class="content-dailog-form">
+          <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+            <div class="icon-content"></div>
+            <div class="content-header">用户登录</div>
+            <div class="user-group">
+              <input type="text" class="form-control" placeholder="请输入用户名" [(ngModel)]="loginParams.username"
+                     name="username" id="username" maxlength="20" tabindex="1" autocomplete="off" appIgnoreSpace
+                     (mouseenter)="onUserMouseEnter()" (mouseleave)="onUserMouseLeave()" (focus)="onUserFocus()"
+                     (blur)="onUserBlur()" #userInput>
+              <div class="user-icon" (mouseenter)="onUserMouseEnter()" (mouseleave)="onUserMouseLeave()"
+                   (focus)="onUserFocus()" (blur)="onUserBlur()" (click)="userInput.focus()" #userIcon></div>
+            </div>
+            <div class="danger" [ngStyle]="{visibility: userError?'visible':'hidden'}">
+              {{userError}}
+            </div>
+            <div class="pwd-group">
+              <input class="form-control" type="password" tabindex="2" placeholder="请输入密码"
+                     [(ngModel)]="loginParams.password" name="password" id="password" minlength="6" maxlength="20"
+                     appIgnoreSpace (mouseenter)="onPwdMouseEnter()" (mouseleave)="onPwdMouseLeave()"
+                     (focus)="onPwdFocus()"
+                     (blur)="onPwdBlur()" #pwdInput>
+              <div class="pwd-icon" (mouseenter)="onPwdMouseEnter()" (mouseleave)="onPwdMouseLeave()"
+                   (focus)="onPwdFocus()" (blur)="onPwdBlur()" (click)="pwdInput.focus()" #pwdIcon></div>
+            </div>
+            <div class="danger" [ngStyle]="{visibility: passwordError?'visible':'hidden'}">
+              {{passwordError}}
+            </div>
+            <button class="submit">登 &nbsp;录</button>
+            <div class="forget-pwd"><a>忘记密码?</a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="https://beian.miit.gov.cn" target="_blank"
+     style="cursor: pointer;text-decoration: none;color:#4548ae ;font-size: 12px;position:absolute;bottom: 10px;left:50%;transform:translate(-50%);">京ICP备15004460号-3</a>
+</div>

@@ -1,0 +1,94 @@
+/**** 模态框 ****/
+
+.modal {
+  background: rgba(0, 0, 0, .5);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-dialog {
+  height: 100%;
+  min-height: 500px;
+}
+
+.modal-content {
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.modal-header {
+  background: #45c8dc;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  vertical-align: middle;
+  min-height: 40px;
+  padding: 0
+}
+
+.modal-title {
+  font-size: 15px;
+  line-height: 40px;
+  text-indent: 1em;
+  color: #fff;
+}
+
+.modal-body {
+  padding-bottom: 0
+}
+
+.modal-body .control-label {
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  display: inline-block;
+  padding: 0 !important;
+}
+
+.modal-footer {
+  padding: 18px;
+  border: none;
+  outline: none;
+  text-align: center;
+  clear: both;
+}
+
+.modal-footer .btn+.btn {
+  margin-left: 40px
+}
+
+.modal-backdrop {
+  opacity: 0 !important;
+  filter: alpha(opacity=0) !important;
+}
+
+/* 模态框的删除按钮 */
+.close,
+.close:hover {
+  opacity: 1;
+  background: none;
+  color: #fff;
+  font-weight: normal;
+  line-height: inherit;
+  text-shadow: none;
+  font-size: 24px;
+  margin-right: 20px;
+  margin-top: 0;
+  outline: none;
+}
+
+.modal .col-sm-3,
+.modal .col-sm-4,
+.modal .col-sm-7,
+.modal .col-sm-8 {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+.modal-header .close {
+  margin-top: 0;
+}

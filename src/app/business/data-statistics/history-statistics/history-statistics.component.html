@@ -1,0 +1,18 @@
+<div class="header">
+  <app-crumb [level1Name]="'数据统计'" [level2Name]="'历史统计'"></app-crumb>
+  <app-search-selector *ngIf="!isHistoryComponent" [initComponent]="currentComponent"></app-search-selector>
+</div>
+<div class="tab-bar">
+  <ul>
+    <li [routerLink]="['flow']" (click)="onNavigatedToHistoryFlowClick()"
+        routerLinkActive="active">历史流量
+    </li>
+    <li [routerLink]="['online-rate']" (click)="onNavigatedToHistoryFlowClick()"
+        routerLinkActive="active">在线率
+    </li>
+    <li [routerLink]="['turnover-rate']" (click)="onNavigatedToHistoryFlowClick()"
+        routerLinkActive="active">车位周转率
+    </li>
+  </ul>
+</div>
+<router-outlet (activate)="onActivate($event)"></router-outlet>

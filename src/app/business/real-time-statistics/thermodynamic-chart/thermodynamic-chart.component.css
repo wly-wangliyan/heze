@@ -1,0 +1,90 @@
+.content-flow {
+  display: flex;
+  position: relative;
+  min-height: 550px;
+  padding-bottom: 0;
+}
+
+.chart-container {
+  border: 1px solid #ddd;
+  margin: 20px;
+  flex: 1 1 auto;
+  border-radius: 4px;
+}
+
+.chart-ui-container {
+  border: 1px solid red;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  right: 20px;
+  bottom: 80px;
+  min-height: 550px;
+  background: transparent;
+}
+
+.chart-search-container {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 400px;
+  display: flex;
+}
+
+/* 右侧图层 */
+
+.chart-layer-container {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  width: 60px;
+}
+
+.chart-layer-container > div:nth-child(n+2) {
+  margin-top: 10px;
+}
+
+.chart-layer-btn {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../../../../assets/images/map/map_tools_border.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.chart-layer-btn:hover {
+  background: url(../../../../assets/images/map/map_tools_border_pushed.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.chart-layer-btn > i {
+  display: block;
+  height: 100%;
+}
+
+.heat-icon-normal {
+  background: url(../../../../assets/images/map/heat_icon_push.png) no-repeat;
+}
+
+.heat-icon-push {
+  background: url(../../../../assets/images/map/heat_icon.png) no-repeat;
+}
+
+.parking-icon-normal {
+  background: url(../../../../assets/images/map/parking_icon_push.png) no-repeat;
+}
+
+.parking-icon-push {
+  background: url(../../../../assets/images/map/parking_icon.png) no-repeat;
+}
+
+/* 路况 */
+.state-icon-normal {
+  background: url(../../../../assets/images/map/road_icon_push.png) no-repeat;
+}
+
+.state-icon-push {
+  background: url(../../../../assets/images/map/road_icon.png) no-repeat;
+}

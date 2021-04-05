@@ -1,0 +1,23 @@
+<div class="chart-counter">{{title}}
+  <ng-container *ngIf="length">
+    <span *ngIf="number1&&length>=6" [ngStyle]="{background:bgColor}">{{number1}}</span>
+    <span *ngIf="number2&&length>=5" [ngStyle]="{background:bgColor}">{{number2}}</span>
+    <span *ngIf="number3&&length>=4" [ngStyle]="{background:bgColor}">{{number3}}</span>
+    <span *ngIf="number4&&length>=3" [ngStyle]="{background:bgColor}">{{number4}}</span>
+    <span *ngIf="number5&&length>=2" [ngStyle]="{background:bgColor}">{{number5}}</span>
+    <span *ngIf="number6&&length>=1" [ngStyle]="{background:bgColor}">{{number6}}</span>
+    <!--<span *ngIf="number7&&length>=2" [ngStyle]="{background:bgColor}">{{number7}}</span>-->
+    <!--<span *ngIf="number8&&length>=1" [ngStyle]="{background:bgColor}">{{number8}}</span>-->
+  </ng-container>
+  <ng-container *ngIf="!length">
+    <span *ngIf="number1" [ngStyle]="{background:bgColor}">{{number1}}</span>
+    <span *ngIf="number2" [ngStyle]="{background:bgColor}">{{number2}}</span>
+    <span *ngIf="number3" [ngStyle]="{background:bgColor}">{{number3}}</span>
+    <span *ngIf="number4" [ngStyle]="{background:bgColor}">{{number4}}</span>
+    <span *ngIf="number5" [ngStyle]="{background:bgColor}">{{number5}}</span>
+    <span *ngIf="number6" [ngStyle]="{background:bgColor}">{{number6}}</span>
+    <!--<span *ngIf="number7" [ngStyle]="{background:bgColor}">{{number7}}</span>-->
+    <!--<span *ngIf="number8" [ngStyle]="{background:bgColor}">{{number8}}</span>-->
+  </ng-container>
+  {{unit}}
+</div>

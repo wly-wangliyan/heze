@@ -1,0 +1,17 @@
+<div class="chart-item-content">
+  <div class="scroll-box" #scrollDiv (mouseenter)="onScrollDivMouseEnter()" (mouseleave)="onScrollDivMouseLeave()"
+    (click)="onScrollDivClick()" [class.click]="!isSimplePermission">
+    <ul>
+      <li *ngFor="let dataItem of dataList" [ngStyle]="{background: dataItem.isOdd ? '':'#f3f7fd'}">
+        <span class="scroll-box-name" [title]="dataItem.source.parking?.parking_name">
+          <span
+            [ngStyle]="{color:dataItem.source.parking.area_type===1?'#18c7b8':'#14a4ed'}">[{{dataItem.source.parking?.area_type|areaType:true}}]</span>
+          {{dataItem.source.parking?.parking_name}}</span>
+        <span [ngStyle]="{visibility:!isSimplePermission? 'visible':'hidden'}">
+          {{dataItem.source.tmp_num}}/{{dataItem.source.total_tmp_num}}</span>
+        <span
+          [ngStyle]="{color: dataItem.source.status|parkingState:true}">{{dataItem.source.status|parkingState}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

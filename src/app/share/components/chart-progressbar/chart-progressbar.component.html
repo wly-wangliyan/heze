@@ -1,0 +1,13 @@
+<div class="progress-container">
+  <div class="progress-header">
+    <span>{{title}}</span>
+    <span [ngStyle]="{color: color}">个</span>
+    <span [ngStyle]="{color: color}">{{count}}</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar"
+         (aria-valuenow)="percent" aria-valuemin="0" aria-valuemax="100"
+         [ngStyle]="{background: color,width:percent+'%'}">
+    </div>
+  </div>
+</div>

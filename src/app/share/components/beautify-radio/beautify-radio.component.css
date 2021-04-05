@@ -1,0 +1,54 @@
+span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 10px 0 0;
+  padding-left: 4px;
+  cursor: pointer;
+}
+
+span:before {
+  content: ' ';
+  width: 20px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span > i {
+  font-style: normal;
+  line-height: 26px;
+}
+
+.unchecked {
+  background: url(../../../../assets/images/radio_unchecked.png) 4px center no-repeat;
+  background-size: 16px;
+}
+
+.checked {
+  background: url(../../../../assets/images/radio_checked.png) 4px center no-repeat;
+  background-size: 16px;
+}
+
+.checked.disabled {
+  background: url(../../../../assets/images/checkbox_checked_disabled.png) 0 0 no-repeat;
+  cursor: not-allowed;
+}
+
+.unchecked.disabled {
+  background: url(../../../../assets/images/checkbox_disabled.png) 0 0 no-repeat;
+  cursor: not-allowed;
+}
+
+input[type=radio] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+ul, ul > li {
+  display: inline-block;
+}
+
+.block,.block > li  {
+  display: block;
+}

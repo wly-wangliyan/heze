@@ -1,0 +1,11 @@
+<div class="city-select-container">
+  <div class="current-city" (click)="onCurrentCityBtnClick()">
+    <span>{{currentRegion?.name}}</span>
+    <i class="drop-down-icon"></i>
+  </div>
+  <div class="city-list" *ngIf="isShowList">
+    <div *ngFor="let region of regionList,let index = index"
+      [ngClass]="{active: region.region_id === currentRegion.region_id}" (click)="onCityListItemClick(region)">
+      {{region.name}}</div>
+  </div>
+</div>

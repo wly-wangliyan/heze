@@ -1,0 +1,451 @@
+.parking-statistics-body {
+  margin: 20px;
+  height: calc(100% - 20px);
+  min-height: calc(100% - 20px);
+  position: relative;
+  margin-bottom: 0;
+  overflow: auto;
+}
+
+.parking-statistics-body-close-left {
+  margin-left: 0;
+}
+
+.content-flow{
+  padding-bottom: 20px;
+}
+
+.parking-statistics-body-left {
+  width: 365px;
+  /*min-width: 360px;*/
+  height: 100%;
+  min-height: 850px;
+  float: left;
+  padding: 12px;
+  background-color: #fff;
+  padding-right: 30px;
+  position: relative;
+  left: 0px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.parking-statistics-body-right {
+  float: left;
+  margin-left: 15px;
+  width: calc(100% - 380px);
+  /*height: 100%;*/
+  border-radius: 5px;
+  height: 100%;
+  min-height: 850px;
+}
+
+.left-title {
+  font-size: 14px;
+  font-family: SimSun;
+  font-weight: bold;
+  color: rgba(39, 39, 39, 1);
+}
+
+.look-history {
+  float: right;
+  position: relative;
+}
+
+.look-history a {
+  font-size: 14px;
+  font-family: SimSun;
+  font-weight: bold;
+  color: rgba(69, 200, 220, 1);
+  text-decoration: none;
+}
+
+.look-history:hover a {
+  color: #3baabb;
+  cursor: pointer;
+}
+
+.look-history-content{
+  position: absolute;
+  width: 166px;
+  top: 40px;
+  left: 145px;
+  border: 1px solid #bbbbbb;
+  box-shadow:0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius:4px;
+  background-color: #fff;
+  padding: 10px 10px 7px 10px;
+}
+
+.look-history-content:before{
+  content:"";
+  width:0;
+  height:0;
+  position:absolute;
+  left:130px;
+  top:-20px;
+  border-top:solid 10px transparent;
+  border-left:solid 10px transparent;
+  border-right:solid 10px transparent;       /* 黑色大三角形 */
+  border-bottom:solid 10px #bbbbbb;
+}
+.look-history-content:after{
+  content:"";
+  width:0;
+  height:0;
+  position:absolute;
+  left:132px;
+  top:-16px;
+  border-top:solid 8px transparent;
+  border-left:solid 8px transparent;
+  border-right:solid 8px transparent;
+  border-bottom:solid 8px #fff;
+}
+
+.look-history-content li {
+  width: 144px;
+  height: 25px;
+  font-size:14px;
+  font-family:SimSun;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  padding: 3px 5px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.look-history-content li span{
+  float: right;
+  margin-right: 5px;
+  cursor: pointer;
+  visibility: hidden;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 13px;
+  background: url(../../../../assets/images/icon_close.png) 0 center no-repeat;
+}
+
+.look-history-content li:hover{
+  background:rgba(243,247,253,1);
+}
+
+.look-history-content li:hover span{
+  visibility: visible;
+}
+
+.parking-statistics-search-from {
+  margin-top: 10px;
+}
+
+span.unchecked,
+span.checked {
+  margin-right: 5px !important;
+}
+
+app-pagination{
+  width: 360px;
+  font-size: 12px;
+}
+
+.parking-statistics-search-from label {
+  font-size: 14px;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 20px;
+}
+
+.search-div {
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.search-div .form-control {
+  width: 272px;
+  height: 37px;
+  float: left;
+  margin-right: -2px;
+  border-radius: 2px;
+}
+
+input[type="submit"] {
+  width: 51px;
+  height: 37px;
+  background: rgba(69, 200, 220, 1) url("../../../../assets/images/search_icon.png") no-repeat center;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  float: left;
+}
+
+input[type="submit"]:hover {
+  background-color: #3baabb;
+}
+
+.parking-table {
+  margin-top: 10px;
+  overflow-y: auto;
+  border: 1px solid #f5f6fc;
+  width: 100%;
+}
+
+.parking-table th {
+  text-align: left;
+  padding-left: 50px;
+  color: #272727;
+  font-size: 14px;
+  height: 38px;
+  background: #fafbfe;
+  line-height: 38px;
+  border-bottom: none;
+}
+
+.parking-table td {
+  border-top: 1px solid #f5f6fc;
+}
+
+.parking-table th:first-of-type {
+  text-align: left;
+  padding-left: 25px;
+}
+
+.parking-table td:first-of-type {
+  width: 100px;
+  padding: 6.5px;
+  text-align: left;
+  padding-left: 28px;
+  cursor: pointer;
+}
+
+.parking-table td:last-of-type {
+  width: 235px !important;
+  display: inline-block;
+  padding: 6.5px;
+  text-align: left;
+  padding-left: 0px;
+  cursor: pointer;
+}
+
+app-pagination{
+  margin-top: 20px;
+}
+
+
+/*right*/
+.parking-statistics-body-right-top {
+  height: 60px;
+  background: #fff;
+  border-radius: 4px;
+  min-width: 1018px;
+}
+
+.parking-statistics-body-right-top > div {
+  float: left;
+  width: 50%;
+  text-align: left;
+  font-size: 20px;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 60px;
+  padding-left: 60px;
+}
+
+.parking-statistics-body-right-top > div:first-of-type{
+  text-align: right;
+  padding-right: 60px;
+
+}
+
+.P-icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: rgba(69, 200, 220, 1);
+  border: 1px solid rgba(140, 144, 191, 1);
+  border-radius: 1px;
+  color: #fff;
+  line-height: 25px;
+  font-weight: 1000;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.car-number {
+  font-size: 20px;
+  font-family: SimSun;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.parking-statistics-body-right-middle {
+  height: 456px;
+  margin-top: 20px;
+  border-radius: 4px;
+  min-width: 1018px;
+}
+
+/* 日历控件 */
+.date-picker {
+  margin-right: 0px!important;
+}
+
+.date-picker ::ng-deep .ant-calendar-picker {
+  width: 136px !important;
+}
+
+.date-picker ::ng-deep .ant-calendar-picker-input {
+  width: 136px !important;
+}
+
+.date-picker ::ng-deep .ant-calendar-picker-clear {
+  display: none;
+}
+
+.date-picker select {
+  width: 150px;
+  margin: 0 10px 0 5px;
+}
+
+.date-picker .start-date, .date-picker .end-date {
+  float: left;
+  width: 130px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.date-picker button {
+  float: left;
+}
+
+.date-picker .year, .date-picker .month {
+  width: 75px;
+  height: 34px;
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.date-picker a {
+  display: block;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #333;
+}
+
+.date-picker span {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  width: 10px;
+  text-align: center;
+}
+
+.date-picker a:hover {
+  text-decoration: none;
+  color: #333;
+}
+
+/*bottom*/
+.parking-statistics-body-right-bottom {
+  height: calc(100% - 536px);
+  min-height: 313px;
+  border-radius: 4px;
+  min-width: 1018px;
+}
+
+.parking-statistics-body-right-bottom-left,
+.parking-statistics-body-right-bottom-right {
+  float: left;
+  width: calc(50% - 10px);
+  background: #fff;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.parking-statistics-body-right-bottom-left {
+  margin-right: 20px;
+}
+
+.inroad-prefix {
+  color: #2FD027;
+  font-style: 14px;
+}
+
+.outroad-prefix {
+  color: #1C76FF;
+  font-style: 14px;
+}
+
+/*echarts*/
+.statistics-chart-dayflow{
+  width: 90%;
+  height: 350px;
+  float: left;
+  margin-left: 5%;
+  /*margin: 0 auto;*/
+}
+/*end*/
+
+.hidden-change-button{
+  position: absolute;
+  right: 0px;
+  top: calc(50% - 21px);
+  width: 24px;
+  height: 42px;
+  background:rgba(255,255,255,1);
+  box-shadow:-1px 0px 2px 0px rgba(4,0,0,0.2);
+  border-radius:4px 0px 0px 4px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+}
+
+canvas{
+  width: 90%;
+}
+
+.day-flow {
+  width: 50%;
+  float: left;
+}
+
+.parking-statistics-body-right-middle-left{
+  width: calc(50% - 10px);
+  margin-right: 20px;
+  float: left;
+  background: #fff;
+  border-radius: 4px;
+  /*min-width: 499px;*/
+}
+
+.parking-statistics-body-right-middle-right{
+  width: calc(50% - 10px);
+  float: left;
+  background: #fff;
+  border-radius: 4px;
+  /*min-width: 499px;*/
+
+}
+
+.statistics-content-header{
+  padding-right: 10px;
+}
+
+select.form-control{
+  width: 100px!important;
+  height: 34px;
+}
+
+.no-data{
+  padding-top: 200px;
+}
+
+.no-data>.content{
+  margin-top: 20px;
+}

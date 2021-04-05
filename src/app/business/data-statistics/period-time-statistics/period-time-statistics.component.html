@@ -1,0 +1,19 @@
+<div class="header">
+  <app-crumb [level1Name]="'数据统计'" [level2Name]="'单日统计'"></app-crumb>
+  <app-search-selector [initComponent]="currentComponent">
+  </app-search-selector>
+</div>
+<!--<div class="content-flow">-->
+<div class="tab-bar">
+  <ul>
+    <li [routerLink]="['flow']" (click)="onNavigatedToRealTimeClick()" routerLinkActive="active">实时流量
+    </li>
+    <li [routerLink]="['filling-rate']" (click)="onNavigatedToRealTimeClick()" routerLinkActive="active">车位填充率
+    </li>
+    <!--<li [routerLink]="['data']" (click)="onNavigatedToDataClick()"-->
+    <!--routerLinkActive="active">实时数据-->
+    <!--</li>-->
+  </ul>
+</div>
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+<!--</div>-->

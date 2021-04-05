@@ -1,0 +1,18 @@
+<div class="chart-item-content">
+  <div echarts class="chart-dashboard" [options]="chartOptions" (chartInit)="onChartInit($event)">
+  </div>
+  <div class="chart-detail">
+    <div class="chart-header">
+      <app-chart-counter [title]="'停车场总数'" bgColor="#45c8dc" [count]="dataInfo?dataInfo.total_num:0" unit="个">
+      </app-chart-counter>
+    </div>
+    <div class="chart-progress-1">
+      <app-chart-progressbar [title]="'在线停车场'" [count]="dataInfo?dataInfo.online_num:0"
+        [total]="dataInfo?dataInfo.total_num:0" [color]="'#46d93f'"></app-chart-progressbar>
+    </div>
+    <div class="chart-progress-2">
+      <app-chart-progressbar [title]="'中断停车场'" [count]="dataInfo?dataInfo.offline_num:0"
+        [total]="dataInfo?dataInfo.total_num:0" [color]="'#f16161'"></app-chart-progressbar>
+    </div>
+  </div>
+</div>

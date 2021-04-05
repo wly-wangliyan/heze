@@ -1,0 +1,201 @@
+.photo-select-wrap {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.photo-select-wrap div {
+  float: left;
+  position: relative;
+  margin: 10px;
+  margin-left: 0;
+  text-align: center;
+  font-size: 0;
+  border: 1px solid #ddd;
+  cursor: zoom-in;
+}
+
+.photo-select-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  border: none;
+  outline: none;
+}
+
+.not-cursor {
+  cursor: auto !important;
+}
+
+.delete-icon {
+  width: 22px;
+  height: 22px;
+  z-index: 110;
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: -11px;
+  cursor: pointer;
+  background: url('../../../../assets/images/delete_picture.png') no-repeat center;
+  background-size: contain;
+}
+
+input[type=file] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+input[type=file] + label {
+  width: 100%;
+  height: 100%;
+  background: url('../../../../assets/images/add_picture.png') no-repeat center;
+  background-size: contain;
+}
+
+.select-wrap {
+  border: none !important;
+  outline: none !important;
+}
+
+.select-wrap label {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* 图片查看 */
+.image-modal {
+  padding: 0 !important;
+}
+
+.image-modal .modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.image-modal .modal-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  padding: 15px 12px 18px 14px;
+}
+
+.image-modal .form-horizontal {
+  width: 100%;
+  margin: 0;
+}
+
+.image-modal .modal-body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.lside-img-arrow, .rside-img-arrow {
+  width: 42px;
+  height: 72px;
+  position: absolute;
+  top: 50%;
+  margin-top: -36px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.lside-img-arrow {
+  left: 0;
+  background: url('../../../../assets/images/lside_img_arrow.png') no-repeat center;
+  background-size: contain;
+}
+
+.rside-img-arrow {
+  right: 0;
+  background: url('../../../../assets/images/rside_img_arrow.png') no-repeat center;
+  background-size: contain;
+}
+
+.img-list ul {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-list ul > li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.img-list ul > li > div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.img-list ul > li > div > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.img-list ul > li > div > a {
+  width: 64px;
+  height: 32px;
+  line-height: 32px;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+.current-page {
+  color: #67983a;
+}
+
+.close-img {
+  width: 54px;
+  height: 54px;
+  margin: 28px auto;
+  background: url('../../../../assets/images/close_img.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+/* 进度条 */
+.photo-select-wrap > div > div.progress-bg {
+  margin: 0;
+  background: rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.progress-wrap {
+  width: 90%;
+  height: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  margin-top: -5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  display: block;
+  border-radius: 6px;
+  animation: reverse progress-bar-stripes 0.40s linear infinite, animate-positive 2s
+}

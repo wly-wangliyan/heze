@@ -1,0 +1,80 @@
+<div class="main-layout">
+  <div class="main-header-layout">
+    <div class="main-logo" [routerLink]="['','home']"></div>
+    <div class="main-header">
+      <span></span>
+      <div (click)="onModifyPwdDivClick()" data-toggle="modal" data-target="#modifyPasswordModal">修改密码</div>
+    </div>
+    <div class="main-header">
+      <div (click)="onLogoutDivClick()">退出</div>
+    </div>
+    <div class="main-header">
+      <div class="main-header-user"></div>
+      <div *ngIf="authService.user">
+        {{authService.user.is_superuser ? '超级管理员':authService.user.username}}
+      </div>
+    </div>
+  </div>
+  <div class="main-left-layout">
+    <app-expanded-menu></app-expanded-menu>
+  </div>
+  <div class="main-right-layout">
+    <div class="content-router-outlet" #routerDiv>
+      <router-outlet></router-outlet>
+    </div>
+
+    <!--无权限403-->
+    <app-http-403-page (displayStateChanged)="displayStateChanged()"></app-http-403-page>
+
+    <!--服务器500-->
+    <app-http-500-page (displayStateChanged)="displayStateChanged()"></app-http-500-page>
+  </div>
+  <app-prompt-box></app-prompt-box>
+  <app-confirmation-box></app-confirmation-box>
+
+  <!-- 修改密码模态框 -->
+  <div class="modal fade " id="modifyPasswordModal" data-backdrop="false" data-keyboard="true" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog pwd-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">修改密码</h4>
+        </div>
+        <div class="modal-body">
+          <form autocomplete="off" (submit)="onModifyPwdFormSubmit()" class="form-horizontal"
+            #modifyPasswordForm="ngForm">
+            <div class="form-group"><label class="col-sm-4 control-label"><b>*</b>原始密码：</label>
+              <div class="col-sm-7">
+                <input type="password" placeholder="请输入原始密码" required appIgnoreSpace
+                  [(ngModel)]="passwordPassword.old_password" name="old_password" minlength="8" maxlength="20"
+                  autocomplete="new-password" class="form-control">
+              </div>
+            </div>
+            <div class="form-group"><label class="col-sm-4 control-label"><b>*</b>新密码：</label>
+              <div class="col-sm-7">
+                <input type="password" placeholder="请输入8-20位新密码" required appIgnoreSpace
+                  [(ngModel)]="passwordPassword.new_password" name="new_password" minlength="8" maxlength="20"
+                  autocomplete="new-password" class="form-control">
+              </div>
+            </div>
+            <div class="form-group"><label class="col-sm-4 control-label"><b>*</b>确认新密码：</label>
+              <div class="col-sm-7">
+                <input type="password" placeholder="再次确认新密码" required appIgnoreSpace [(ngModel)]="repeat_password"
+                  name="repeat_password" minlength="8" maxlength="20" autocomplete="new-password" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" [disabled]="!modifyPasswordForm.form.valid" class="btn btn-primary">
+                确定
+              </button>
+              <button type="button" data-dismiss="modal" class="btn btn-inverse">
+                取消
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

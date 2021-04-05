@@ -1,0 +1,119 @@
+<div class="list-container">
+  <form class="search-form" onkeydown="if(event.keyCode===13){return false;}" autocomplete="off">
+    <div class="form-group">
+      <span>名称：</span>
+      <input class="form-control" [(ngModel)]="searchParams.parking_name" name="parking_name" placeholder="请输入停车场名称"
+        (keyup)="onSearchBtnClick()" maxlength="50" />
+    </div>
+    <div class="form-group">
+      <span>停车场类型：</span>
+      <select class="form-control" [(ngModel)]="searchParams.area_type" name="area_type">
+        <option value="">全部</option>
+        <option value="1">路内停车场</option>
+        <option value="2">路外停车场</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <span>状态：</span>
+      <select class="form-control" [(ngModel)]="searchParams.status" name="status">
+        <option value="">全部</option>
+        <option value="1">空闲</option>
+        <option value="2">宽松</option>
+        <option value="3">紧张</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="button" (click)="onSearchBtnClick()">查询</button>
+    </div>
+  </form>
+
+  <!--ng 表格 -->
+  <div class="table">
+    <nz-table #parkingTable [nzData]="dataList" [nzShowPagination]="true" [nzPageSize]="'15'" [nzLoading]="isLoading"
+      [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="onNZPageIndexChange($event)" nzBordered>
+      <thead>
+        <tr>
+          <th class="special-text-index">序号</th>
+          <th>停车场名称</th>
+          <th>停车场类型</th>
+          <th>
+            <div>
+              <span class="btn-icon-sort-container"
+                (click)="onChangeOrderBtnClick(OrderItemType.total_num, currentOrderType)">
+                车位总数
+                <div class="btn-icon-sort" [class.btn-icon-disabled]="currentOrderItem !== OrderItemType.total_num"
+                  [class.btn-icon-up]="(currentOrderItem === OrderItemType.total_num) && (currentOrderType === OrderByType.order)"
+                  [class.btn-icon-down]="(currentOrderItem === OrderItemType.total_num) && (currentOrderType === OrderByType.reverse_order)">
+                </div>
+              </span>
+            </div>
+          </th>
+          <th>
+            <div>
+              <span class="btn-icon-sort-container"
+                (click)="onChangeOrderBtnClick(OrderItemType.filling_rate, currentOrderType)">
+                当前填充率
+                <div class="btn-icon-sort" [class.btn-icon-disabled]="currentOrderItem !== OrderItemType.filling_rate"
+                  [class.btn-icon-up]="(currentOrderItem === OrderItemType.filling_rate) && (currentOrderType === OrderByType.order)"
+                  [class.btn-icon-down]="(currentOrderItem === OrderItemType.filling_rate) && (currentOrderType === OrderByType.reverse_order)">
+                </div>
+              </span>
+            </div>
+          </th>
+          <th>
+            <div>
+              <span class="btn-icon-sort-container"
+                (click)="onChangeOrderBtnClick(OrderItemType.total_tmp_num, currentOrderType)">
+                临时车位总数
+                <div class="btn-icon-sort" [class.btn-icon-disabled]="currentOrderItem !== OrderItemType.total_tmp_num"
+                  [class.btn-icon-up]="(currentOrderItem === OrderItemType.total_tmp_num) && (currentOrderType === OrderByType.order)"
+                  [class.btn-icon-down]="(currentOrderItem === OrderItemType.total_tmp_num) && (currentOrderType === OrderByType.reverse_order)">
+                </div>
+              </span>
+            </div>
+          </th>
+          <th>
+            <div>
+              <span class="btn-icon-sort-container"
+                (click)="onChangeOrderBtnClick(OrderItemType.status, currentOrderType)">
+                临时车位状态
+                <div class="btn-icon-sort" [class.btn-icon-disabled]="currentOrderItem !== OrderItemType.status"
+                  [class.btn-icon-up]="(currentOrderItem === OrderItemType.status) && (currentOrderType === OrderByType.order)"
+                  [class.btn-icon-down]="(currentOrderItem === OrderItemType.status) && (currentOrderType === OrderByType.reverse_order)">
+                </div>
+              </span>
+            </div>
+          </th>
+          <th>
+            今日流量
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of parkingTable.data ;let i=index">
+          <td class="special-text-index">{{(i+(pageIndex-1)*15+1)|zeroFill}}</td>
+          <td [title]="data.parking?.parking_name +'\n上线日期：'+data.parking?.firstOperationTime">
+            <span *ngIf="data.run_status===2" class="parking-status"
+              [ngClass]="{'parking-status-break': data.run_status===2}"></span>
+            {{data.parking?.parking_name|zMaxLength:25}}</td>
+          <td>{{data.parking?.area_type|areaType}}</td>
+          <ng-container *ngIf="data.run_status!==2">
+            <td>{{data.tmp_num+data.other_num}}/{{data.total_num}}</td>
+            <td>{{data.filling_rate}}</td>
+            <td>{{data.tmp_num}}/{{data.total_tmp_num}}</td>
+            <td [ngStyle]="{color: data.status|parkingState:true}">
+              {{data.status|parkingState}}</td>
+            <td>{{data.flow+' 辆'}}</td>
+          </ng-container>
+          <ng-container *ngIf="data.run_status===2">
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+.view {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: #fff;
+}
+
+.center {
+  cursor: pointer;
+}
+
+.view::-webkit-scrollbar {
+  width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 10px;
+}
+
+.fs-container {
+  width: 2752px;
+  height: 1032px;
+  display: flex;
+  flex-direction: column;
+  //background: #012037 url('/assets/images/screen/full_screen_bg4.jpg') no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  background: #2a3854;
+
+  & > .fs-map-center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  & > .fs-header {
+    width: 100%;
+    height: 82px;
+    padding: 0 40px;
+    display: flex;
+    color: #fff;
+
+    z-index: 5;
+    user-select: none;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+
+    background: url('/assets/images/full-screen/bg_full_screen_header.png') no-repeat;
+    background-size: 100%;
+
+    .center {
+      position: relative;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(180deg,
+      #fff 30%,
+      rgba(33, 255, 231, 1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      line-height: 100px;
+      font-size: 40px;
+      letter-spacing: 8px;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .left > span,
+    .right > span {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 68px;
+      background: linear-gradient(180deg,
+      #fff 40%,
+      rgba(110, 171, 255, 0.69) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .left > span {
+      margin-right: 20px;
+    }
+  }
+
+  & > .fs-content-left,
+  & > .fs-content-right {
+    position: absolute;
+    top: 90px;
+
+    z-index: 5;
+    width: 800px;
+    height: 900px;
+
+    border: 1px solid red;
+
+    & > .fs-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      position: relative;
+    }
+  }
+
+  & > .fs-content-left {
+    left: 30px;
+  }
+
+  & > .fs-content-right {
+    right: 30px;
+  }
+
+  & > .bg-bottom-fs-container-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 94px;
+    background: url('/assets/images/full-screen/full_screen_bottom_line.png') no-repeat;
+    background-size: 100% 100%;
+    z-index: 4;
+  }
+
+  .center {
+    flex: 1;
+  }
+
+  .left,
+  .right {
+    width: 920px;
+  }
+}

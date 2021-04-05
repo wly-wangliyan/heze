@@ -1,0 +1,41 @@
+<div class="header">
+  <app-crumb [level1Name]="'实时统计'" [level2Name]="'停车场状态'"></app-crumb>
+  <app-search-selector [initComponent]="'ParkingStateComponent'"
+    [ngStyle]="{visibility: showSelector?'visible':'hidden'}">
+  </app-search-selector>
+</div>
+<div class="content-flow">
+  <ul class="parking-count-container" *ngIf="dataInfo">
+    <li>
+      <div class="parking-count">
+        <app-chart-counter-bg title="停车场总数" [bgClassName]="'count-bg'" [setCount]="dataInfo.parking_count">
+        </app-chart-counter-bg>
+      </div>
+    </li>
+    <li>
+      <div class="parking-count">
+        <app-chart-counter-bg title="停车场空闲" [bgClassName]="'free-bg'" [setCount]="dataInfo.free_count">
+        </app-chart-counter-bg>
+      </div>
+    </li>
+    <li>
+      <div class="parking-count">
+        <app-chart-counter-bg title="停车场宽松" [bgClassName]="'loose-bg'" [setCount]="dataInfo.ample_count">
+        </app-chart-counter-bg>
+      </div>
+    </li>
+    <li>
+      <div class="parking-count">
+        <app-chart-counter-bg title="停车场紧张" [bgClassName]="'nervous-bg'" [setCount]="dataInfo.busy_count">
+        </app-chart-counter-bg>
+      </div>
+    </li>
+    <li>
+      <div class="parking-count">
+        <app-chart-counter-bg title="今日总流量" [bgClassName]="'count-bg'" [setCount]="dataInfo.total_flow">
+        </app-chart-counter-bg>
+      </div>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

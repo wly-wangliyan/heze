@@ -1,0 +1,31 @@
+/*500*/
+.five-page-wrap {
+  width: 480px;
+  color: #585858;
+  margin: 10% auto;
+  text-align: center;
+  overflow: hidden;
+  display: none;
+}
+.five-page-wrap .content {
+  text-align: center;
+  overflow: hidden;
+  width: 65%;
+  margin: 20px auto;
+}
+
+.five-page-wrap .content > p {
+  float: left;
+}
+
+.five-page-wrap .content > p:nth-child(2) {
+  width: 30px;
+  height: 20px;
+  /* background: url('../../../../../assets/images/icon_group1.png') 50px -18px; */
+  margin-left: 20px;
+}
+
+.five-page-wrap .content > p:last-child {
+  color: #428fb8;
+  text-decoration: underline;
+}

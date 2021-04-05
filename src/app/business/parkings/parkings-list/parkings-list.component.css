@@ -1,0 +1,12 @@
+.search-position span {
+  float: left;
+}
+
+.search-position input {
+  margin-left: 5px;
+}
+
+.position-select {
+  float: left;
+  margin-bottom: -15px;
+}
